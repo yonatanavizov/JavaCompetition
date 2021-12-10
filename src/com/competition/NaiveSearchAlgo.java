@@ -3,8 +3,8 @@ package com.competition;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NaiveSearchAlgo implements ISearchAlgoFamily {
-
+public class NaiveSearchAlgo implements ISearchAlgoFamily
+{
 	private List<Integer> results;
 	private String big, small;
 	
@@ -84,5 +84,4 @@ public class NaiveSearchAlgo implements ISearchAlgoFamily {
         }
         return SearchResult.Found;
     }
-
 }

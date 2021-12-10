@@ -3,7 +3,8 @@ package com.competition;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KMPSearchAlgo implements ISearchAlgoFamily {
+public class KMPSearchAlgo implements ISearchAlgoFamily
+{
 
 	private List<Integer> results;
     private int[] lps;
