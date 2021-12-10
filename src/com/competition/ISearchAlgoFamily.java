@@ -1,5 +1,6 @@
 package com.competition;
 import java.util.List;
+
 public interface ISearchAlgoFamily
 {
 	    enum SearchResult
