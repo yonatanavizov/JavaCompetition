@@ -4,9 +4,10 @@ public class Program
 {
 	public static void main(String[] args)
 	{
-		System.out.println("ASJHGDJKASDBA");
-		
-		ISearchAlgoFamily searcher = new NaiveSearchAlgo();
+		//NaiveSearchAlgo
+		//KMPSearchAlgo
+		//RabinKarpAlgo
+		ISearchAlgoFamily searcher = new RabinKarpAlgo();
 		
 		String s = "ASAF";
 		String b = "somethingASAF12378ASAF1827hellothere";
