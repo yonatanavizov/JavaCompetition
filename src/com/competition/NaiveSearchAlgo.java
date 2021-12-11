@@ -13,7 +13,6 @@ public class NaiveSearchAlgo implements ISearchAlgoFamily
 		results = new ArrayList<Integer>();
 	}
 	
-	
 	@Override
 	public SearchResult Search(String a1, String a2)
 	{
@@ -30,8 +29,6 @@ public class NaiveSearchAlgo implements ISearchAlgoFamily
 		
 		int s = 0, b = 0, old = 0;
 		boolean foundAMatch = true;
-		//1223ASjhsgdASAFkjashdka
-		//ASAF
 		
 		while(old < big.length())
 		{
