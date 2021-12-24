@@ -8,7 +8,6 @@ public class Team
 	public enum Rank
 	{
 		pro,adv,beginner;
-		
 	}
 	private int members;
 	private int postion;

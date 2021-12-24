@@ -1,13 +1,11 @@
 package com.competition.src;
-//Reads the JSON file and writes to a JSON file, of all Teams, makes them into Team List.
-//Should only interact with Team and TeamDAOService
-public class TeamDAO implements IDAO
-{
+
+public class ContestDAO implements IDAO {
 
 	@Override
 	public void SetJson(Object object) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
