@@ -1,9 +1,9 @@
 package com.competition.src;
 
-public interface IDAO
+public interface IDAO <ID extends java.io.Serializable,T>
 {
-	//takes object turns to json
-	void SetJson(Object object);
-	//Takes json, turns to object
-	Object SetObject(String json);
+	void save(T entity);
+	void delete(T entity);
+	T find(ID id);
 }
+	
