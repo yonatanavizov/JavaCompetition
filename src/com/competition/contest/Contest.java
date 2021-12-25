@@ -1,7 +1,9 @@
-package com.competition.src;
+package com.competition.contest;
 
 import java.util.HashMap;
 import java.util.List;
+
+import com.competition.match.Match;
 
 public class Contest
 {

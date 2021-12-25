@@ -1,4 +1,4 @@
-package com.competition.src;
+package com.competition.contest;
 
 import java.util.List;
 

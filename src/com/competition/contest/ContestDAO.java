@@ -1,6 +1,8 @@
-package com.competition.src;
+package com.competition.contest;
 
-public class MatchDAO implements IDAO {
+import com.competition.src.IDAO;
+
+public class ContestDAO implements IDAO {
 
 	@Override
 	public void SetJson(Object object) {

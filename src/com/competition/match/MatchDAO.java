@@ -1,6 +1,8 @@
-package com.competition.src;
+package com.competition.match;
 
-public class ContestDAO implements IDAO {
+import com.competition.src.IDAO;
+
+public class MatchDAO implements IDAO {
 
 	@Override
 	public void SetJson(Object object) {
@@ -13,5 +15,4 @@ public class ContestDAO implements IDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

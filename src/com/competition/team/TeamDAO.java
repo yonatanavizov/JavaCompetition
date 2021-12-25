@@ -1,4 +1,7 @@
-package com.competition.src;
+package com.competition.team;
+
+import com.competition.src.IDAO;
+
 //Reads the JSON file and writes to a JSON file, of all Teams, makes them into Team List.
 //Should only interact with Team and TeamDAOService
 public class TeamDAO implements IDAO
