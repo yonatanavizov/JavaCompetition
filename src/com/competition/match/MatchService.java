@@ -1,37 +1,39 @@
-package com.competition.contest;
+package com.competition.match;
 
 import java.util.List;
-import com.competition.src.*;
 
-public class ContestService implements IService<Contest>
-{
-	
-	List<Contest> contestsDB;
-	ContestDAO translator;
-	
+import com.competition.src.IService;
+
+public class MatchService implements IService<Match> {
+
 	@Override
-	public List<Contest> get_objects() {
+	public List<Match> get_objects() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
-	public void set_objects(List<Contest> list_t) {
+	public void set_objects(List<Match> list_t) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public void print_service() {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
-	public void insert(Contest obj) {
+	public void insert(Match obj) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
-	public boolean delete(Contest obj) {
+	public boolean delete(Match obj) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }

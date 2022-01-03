@@ -2,6 +2,7 @@ package com.competition.team;
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 
 import com.competition.src.IDAO;
@@ -9,38 +10,32 @@ import com.google.gson.Gson;
 
 //Reads the JSON file and writes to a JSON file, of all Teams, makes them into Team List.
 //Should only interact with Team and TeamDAOService
-public class TeamDAO implements IDAO,Serializable
+public class TeamDAO implements IDAO<Long, Team>
 {
-	private static final long serialVersionUID = -8369577276878817253L;//? PROBLEM
 	FileWriter filewrite;
 	FileReader fileread;
 
 	@Override
-	public void save(Object entity) {
-		// TODO Auto-generated method stub
+	public void save(Team entity) throws IOException
+	{
 		Gson gson = new Gson();
-		String cust = gson.toJson(entity);
-		//FileWriter fileWriter = new FileWriter("Customer.json");
-		//fileWriter.write(cust);
-		///fileWriter.close();
+		String team = gson.toJson(entity);
+		filewrite = new FileWriter("teams.json");
+		filewrite.write(team);
+		filewrite.close();	
+	}
+
+	@Override
+	public void delete(Team entity) {
+		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Team find(Long id) {
 		//Gson gson = new Gson();
 		//Customer cust = gson.fromJson(new FileReader("Customer.json"), Customer.class);
 		//System.out.println(cust);
-		
-	}
-
-	@Override
-	public void delete(Object entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Object find(Serializable id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 }

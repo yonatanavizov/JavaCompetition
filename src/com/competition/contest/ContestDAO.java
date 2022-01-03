@@ -1,28 +1,23 @@
 package com.competition.contest;
 
 import java.io.Serializable;
-
 import com.competition.src.IDAO;
 
-public class ContestDAO implements IDAO {
-
+public class ContestDAO implements IDAO<Long, Contest>
+{
 	@Override
-	public void save(Object entity) {
-		// TODO Auto-generated method stub
+	public void save(Contest entity)
+	{
 		
 	}
-
 	@Override
-	public void delete(Object entity) {
-		// TODO Auto-generated method stub
+	public void delete(Contest entity)
+	{
 		
 	}
-
 	@Override
-	public Object find(Serializable id) {
-		// TODO Auto-generated method stub
+	public Contest find(Long id)
+	{
 		return null;
 	}
-
-
 }

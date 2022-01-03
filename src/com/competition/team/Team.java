@@ -1,7 +1,5 @@
 package com.competition.team;
 
-
-	
 //The teams that will be represented as a object in a JSON file.
 public class Team 
 {
@@ -15,6 +13,7 @@ public class Team
 	private float win_loss_ratio;
 	private String game_type;
 	private String name;
+	private String summary;
 	
 	public Team()
 	{
@@ -24,9 +23,10 @@ public class Team
 		this.members=-1;
 		this.postion=-1;
 		this.win_loss_ratio=-1;
+		this.summary = "n/a";
 	}
 	
-	public Team(String name,String game_type,Rank rank,int members,int position,float win_loss)
+	public Team(String name,String game_type,Rank rank,int members,int position,float win_loss, String summary)
 	{
 		this.name=name;
 		this.game_type=game_type;
@@ -34,7 +34,9 @@ public class Team
 		this.members=members;
 		this.postion=position;
 		this.win_loss_ratio=win_loss;
+		this.summary = summary;
 	}
+	
 	public Team(Team other)
 	{
 		this.name=other.get_name();
@@ -43,6 +45,7 @@ public class Team
 		this.members=other.get_members();
 		this.postion=other.get_position();
 		this.win_loss_ratio=other.get_win_loss();
+		this.summary = other.get_summary();
 	}
 	
 	public String get_name()
@@ -69,7 +72,10 @@ public class Team
 	{
 		return this.win_loss_ratio;
 	}
-	
+	public String get_summary()
+	{
+		return this.summary;
+	}
 	//=============================================
 	public void set_name(String name)
 	{
@@ -95,5 +101,8 @@ public class Team
 	{
 		 this.win_loss_ratio=win_loss;
 	}
-	
+	public void set_summary(String summary)
+	{
+		this.summary = summary;
+	}
 }
