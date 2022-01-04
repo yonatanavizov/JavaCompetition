@@ -2,6 +2,7 @@ package com.competition.src;
 
 import java.util.List;
 
+// Interface for things that require a Service.
 public interface IService<T>
 {
 	List<T> get_objects();
