@@ -52,5 +52,10 @@ public class TeamService implements IService<Team>
 		return false;
 	}
 	
+	public void initialLoad()
+	{
+		teamsDB = translator.getTeams();
+	}
+	
 	//search with KMP and all that
 }

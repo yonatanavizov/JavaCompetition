@@ -1,10 +1,20 @@
 package com.competition.src;
 
+import java.net.URL;
+
+import org.junit.jupiter.api.Test;
+
+import com.competition.team.TeamService;
+
 public class Program
 {
 	public static void main(String[] args)
 	{
-		// TODO Auto-generated method stub
-		System.out.println("bullshit");
+		System.out.println("start");	    
+	    
+	    TeamService ts = new TeamService();
+		ts.initialLoad();
+		ts.print_service();
+		System.out.println("end");
 	}
 }

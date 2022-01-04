@@ -8,7 +8,7 @@ public class UtilityClass
 {
 	public static class ReadClass
 	{
-		public static String TeamsJsonPath = "teams.json";
+		public static String TeamsJsonPath = "/JavaCompetition/src/resources/teams.json";
 		
 		public ReadClass()
 		{

@@ -22,6 +22,7 @@ public class TeamDAO implements IDAO<Long, Team>
 	public TeamDAO()
 	{
 		teamArray = new ArrayList<Team>();
+		init();
 	}
 	
 	@Override
@@ -46,5 +47,12 @@ public class TeamDAO implements IDAO<Long, Team>
 	public ArrayList<Team> getTeams()
 	{
 		return teamArray;
+	}
+	
+	private void init()
+	{
+		String contents = UtilityClass.ReadClass.FileToString(UtilityClass.ReadClass.TeamsJsonPath);
+		Gson gson = new Gson();
+		teamArray = gson.fromJson(contents, teamListType);
 	}
 }
