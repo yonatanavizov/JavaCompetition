@@ -1,8 +1,10 @@
 package com.competition.team;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.competition.ISearchAlgoFamily;
+import com.competition.KMPSearchAlgo;
 import com.competition.src.IService;
 
 //Takes the DAO of the Team, collects the List from it, and starts from here the LOGIC 
@@ -10,14 +12,20 @@ import com.competition.src.IService;
 //This is the class people will use for the logic of the application.
 public class TeamService implements IService<Team>
 {
-	private List<Team> teamsDB;
+	private ArrayList<Team> teamsDB;
 	private TeamDAO translator;
 	private ISearchAlgoFamily searcher;
 	//get - reads jsons into list 
 	//set - sets the list to this new list, and then updates the jsons
+	
+	public TeamService()
+	{
+		translator = new TeamDAO();
+		teamsDB = new ArrayList<Team>();
+	}
 	@Override
 	public List<Team> get_objects() {
-		// TODO Auto-generated method stub
+		teamsDB = translator.getTeams();
 		return null;
 	}
 	@Override
@@ -26,9 +34,12 @@ public class TeamService implements IService<Team>
 		
 	}
 	@Override
-	public void print_service() {
-		// TODO Auto-generated method stub
-		
+	public void print_service()
+	{
+		for(int i = 0; i < teamsDB.size(); i++)
+		{
+			System.out.println(teamsDB.get(i).to_string());
+		}
 	}
 	@Override
 	public void insert(Team obj) {

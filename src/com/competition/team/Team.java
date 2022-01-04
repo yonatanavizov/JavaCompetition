@@ -7,6 +7,7 @@ public class Team
 	{
 		pro,adv,beginner;
 	}
+	private int tid;
 	private int members;
 	private int postion;
 	private Rank rank;
@@ -17,6 +18,7 @@ public class Team
 	
 	public Team()
 	{
+		this.tid = 1;
 		this.name="n/a";
 		this.game_type="football";
 		this.rank=Rank.beginner;
@@ -26,8 +28,9 @@ public class Team
 		this.summary = "n/a";
 	}
 	
-	public Team(String name,String game_type,Rank rank,int members,int position,float win_loss, String summary)
+	public Team(int tid, String name,String game_type,Rank rank,int members,int position,float win_loss, String summary)
 	{
+		this.tid = tid;
 		this.name=name;
 		this.game_type=game_type;
 		this.rank=rank;
@@ -39,7 +42,8 @@ public class Team
 	
 	public Team(Team other)
 	{
-		this.name=other.get_name();
+		this.tid = other.get_tid();
+		this.name =other.get_name();
 		this.game_type=other.get_game_type();
 		this.rank=other.get_rank();
 		this.members=other.get_members();
@@ -76,6 +80,17 @@ public class Team
 	{
 		return this.summary;
 	}
+	public int get_tid()
+	{
+		return this.tid;
+	}
+	public String to_string()
+	{
+		String str = "id: " + tid + " [name: " + name + ", game_type: " + game_type + 
+				", rank: " + rank + ", members: " + members + ", postion: " + postion + 
+				", win_loss_ratio: " + win_loss_ratio + ", summary: " + summary + "]";
+		return str;
+	}
 	//=============================================
 	public void set_name(String name)
 	{
@@ -104,5 +119,9 @@ public class Team
 	public void set_summary(String summary)
 	{
 		this.summary = summary;
+	}
+	public void set_tid(int tid)
+	{
+		this.tid = tid;
 	}
 }
