@@ -2,18 +2,24 @@ package com.competition.src;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class UtilityClass
 {
+	
 	public static class ReadClass
 	{
-		public static String TeamsJsonPath = "/JavaCompetition/src/resources/teams.json";
+		public static String TeamsJsonPath = Path.of(
+				Paths.get(".").normalize().toAbsolutePath().toString(), 
+				"_EXTRA",
+				"Jsons","teams.json").toString();
 		
-		public ReadClass()
-		{
-			
-		}
+		public static String MatchesJsonPath = Path.of(
+				Paths.get(".").normalize().toAbsolutePath().toString(), 
+				"_EXTRA",
+				"Jsons","matches.json").toString();
+		
 		public static String FileToString(String filePath) 
 	    {
 	        String content = "";
@@ -30,5 +36,4 @@ public class UtilityClass
 	        return content;
 	    }
 	}
-	
 }

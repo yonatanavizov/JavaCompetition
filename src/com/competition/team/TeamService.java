@@ -1,6 +1,7 @@
 package com.competition.team;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.competition.ISearchAlgoFamily;
@@ -12,7 +13,7 @@ import com.competition.src.ICustomService;
 //This is the class people will use for the logic of the application.
 public class TeamService implements ICustomService<Team>
 {
-	private ArrayList<Team> teamsDB;
+	private HashMap<String, Team> teamsDB;
 	private TeamDAO translator;
 	private ISearchAlgoFamily searcher;
 	//get - reads jsons into list 
@@ -21,11 +22,11 @@ public class TeamService implements ICustomService<Team>
 	public TeamService()
 	{
 		translator = new TeamDAO();
-		teamsDB = new ArrayList<Team>();
+		teamsDB = new HashMap<String, Team>();
 	}
 	@Override
 	public List<Team> get_objects() {
-		teamsDB = translator.getTeams();
+		//teamsDB = translator.getTeams();
 		return null;
 	}
 	@Override
@@ -54,7 +55,7 @@ public class TeamService implements ICustomService<Team>
 	
 	public void initialLoad()
 	{
-		teamsDB = translator.getTeams();
+		//teamsDB = translator.getTeams();
 	}
 	
 	//search with KMP and all that

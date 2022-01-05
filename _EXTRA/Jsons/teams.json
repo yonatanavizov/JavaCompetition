@@ -2,7 +2,7 @@
     "teams":
     [    
         {
-            "tID" : 1,
+            "tid" : 1,
             "members":10,
             "postion": 100,
             "rank": 1000,
@@ -12,7 +12,7 @@
             "summary": "You know that Playtika is the GREATEST sponser of Tel Aviv?"
         },
         {
-            "tID" : 2,
+            "tid" : 2,
             "members":21,
             "postion": 211,
             "rank": 2111,
