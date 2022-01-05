@@ -3,7 +3,7 @@ package com.competition.contest;
 import java.util.List;
 import com.competition.src.*;
 
-public class ContestService implements IService<Contest>
+public class ContestService implements ICustomService<Contest>
 {
 	
 	List<Contest> contestsDB;

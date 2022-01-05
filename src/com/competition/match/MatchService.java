@@ -2,10 +2,10 @@ package com.competition.match;
 
 import java.util.List;
 
-import com.competition.src.IService;
+import com.competition.src.ICustomService;
 
 // Something here too. 
-public class MatchService implements IService<Match> {
+public class MatchService implements ICustomService<Match> {
 
 	@Override
 	public List<Match> get_objects() {

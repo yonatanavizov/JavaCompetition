@@ -5,12 +5,12 @@ import java.util.List;
 
 import com.competition.ISearchAlgoFamily;
 import com.competition.KMPSearchAlgo;
-import com.competition.src.IService;
+import com.competition.src.ICustomService;
 
 //Takes the DAO of the Team, collects the List from it, and starts from here the LOGIC 
 // we may need (Like sorts, or finding matches from here).
 //This is the class people will use for the logic of the application.
-public class TeamService implements IService<Team>
+public class TeamService implements ICustomService<Team>
 {
 	private ArrayList<Team> teamsDB;
 	private TeamDAO translator;
