@@ -1,13 +1,14 @@
 package com.competition.src;
 
-import java.util.List;
+import java.util.HashMap;
 
 // Interface for things that require a Service.
-public interface ICustomService<T>
+public interface ICustomService<ID, OBJ>
 {
-	List<T> get_objects();
-	void set_objects(List<T> list_t);
-	void print_service();
-	void insert(T obj);
-	boolean delete(T obj);
+	HashMap<ID, OBJ> get_objects(); // Whoever needs gets the FIXED DB.
+	void update_objects(); // translation to Service DB from IDAO (Json Read) [Only for CTOR]
+	void print_service(); // Print DB
+	boolean insert(OBJ obj); // Add to DB, Call insert from IDAO
+	boolean delete(OBJ obj); // Remove from DB, Call remove from IDAO
+	OBJ find(ID id); // Find Object from DB
 }

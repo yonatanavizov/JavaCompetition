@@ -2,10 +2,8 @@ package com.competition.src;
 
 import java.io.IOException;
 
-public interface IDAO <ID extends java.io.Serializable,T>
+public interface IDAO <ID extends java.io.Serializable,OBJ>
 {
-	void save(T entity) throws IOException;
-	void delete(T entity) throws IOException;
-	T find(ID id) throws IOException;
+	void save(OBJ entity) throws IOException;
+	void delete(OBJ entity) throws IOException;
 }
-	

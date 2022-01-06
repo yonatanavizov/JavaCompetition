@@ -1,25 +1,22 @@
 {
-    "teams":
-    [    
-        {
-            "tid" : 1,
-            "members":10,
-            "postion": 100,
-            "rank": 1000,
-            "win_loss_ratio":0.56,
-            "game_type": "Basket Ball",
-            "name": "Maccabi Tel Aviv",
-            "summary": "You know that Playtika is the GREATEST sponser of Tel Aviv?"
-        },
-        {
-            "tid" : 2,
-            "members":21,
-            "postion": 211,
-            "rank": 2111,
-            "win_loss_ratio":0.43,
-            "game_type": "Basket Ball",
-            "name": "HaPoel Haifa",
-            "summary": "This team was founded in 1974 after a good war that did not affect Israel At all."
-        }
-    ]
+    "1" : {
+        "tid" : 1,
+        "members":10,
+        "postion": 100,
+        "rank": 1000,
+        "win_loss_ratio":0.56,
+        "game_type": "Basket Ball",
+        "name": "Maccabi Tel Aviv",
+        "summary": "You know that Playtika is the GREATEST sponser of Tel Aviv?"
+    },
+    "2" : {
+        "tid" : 2,
+        "members":21,
+        "postion": 211,
+        "rank": 2111,
+        "win_loss_ratio":0.43,
+        "game_type": "Basket Ball",
+        "name": "HaPoel Haifa",
+        "summary": "This team was founded in 1974 after a good war that did not affect Israel At all."
+    }
 }
