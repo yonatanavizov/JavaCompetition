@@ -12,15 +12,15 @@ import com.google.gson.reflect.TypeToken;
 
 //Reads the JSON file and writes to a JSON file, of all Teams, makes them into Team List.
 //Should only interact with Team and TeamDAOService
-public class TeamDAO implements IDAO<Integer, Team>
+public class TeamDAO implements IDAO<String, Team>
 {
-	private HashMap<Integer, Team> db; // SHould be private HashMap<Long, Team> db2;
-	private static Type teamListType = new TypeToken<HashMap<Integer, Team>>(){}.getType();
+	private HashMap<String, Team> db; // SHould be private HashMap<Long, Team> db2;
+	private static Type teamListType = new TypeToken<HashMap<String, Team>>(){}.getType();
 	private static TeamDAO instance;
 	
 	private TeamDAO() // Singleton based private Constructor
 	{
-		db = new HashMap<Integer, Team>();
+		db = new HashMap<String, Team>();
 		try
 		{
 			init();
@@ -61,15 +61,9 @@ public class TeamDAO implements IDAO<Integer, Team>
 	{
 		
 	}
-
-	public Team[] getTeams()
-	{
-		return null;//db.get("teams");
-	}
 	
-	private void create_new_teamsArray(int addition)
+	public HashMap<String, Team> get_db()
 	{
-		//int size = db.get("teams").length;
-		//Team[] teams = new Team[size+addition];
+		return db;
 	}
 }

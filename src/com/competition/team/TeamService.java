@@ -9,16 +9,13 @@ import com.competition.src.ICustomService;
 //Takes the DAO of the Team, collects the List from it, and starts from here the LOGIC 
 // we may need (Like sorts, or finding matches from here).
 //This is the class people will use for the logic of the application.
-public class TeamService implements ICustomService<Long, Team>
+public class TeamService implements ICustomService<String, Team>
 {
-	private HashMap<Long, Team> teamsDB;
-	private TeamDAO translator;
+	private HashMap<String, Team> teamsDB;
 	//private ISearchAlgoFamily searcher;//TODO: Fix it to Static Classes
 
 	public TeamService()
 	{
-		translator = TeamDAO.get_instance();
-		//searcher
 		update_objects();
 	}
 	
@@ -32,7 +29,7 @@ public class TeamService implements ICustomService<Long, Team>
 	}
 
 	@Override
-	public HashMap<Long, Team> get_objects()
+	public HashMap<String, Team> get_objects()
 	{
 		return teamsDB;
 	}
@@ -40,12 +37,7 @@ public class TeamService implements ICustomService<Long, Team>
 	@Override
 	public void update_objects()
 	{
-		Team[] db = translator.getTeams();
-		teamsDB = new HashMap<Long, Team>();
-		for(int i = 0; i < db.length; i++)
-		{
-			teamsDB.put((long)db[i].get_tid(), new Team(db[i]));
-		}
+		teamsDB = TeamDAO.get_instance().get_db();
 	}
 
 	@Override
@@ -53,11 +45,11 @@ public class TeamService implements ICustomService<Long, Team>
 	{
 		if(obj == null) return false;
 		
-		teamsDB.put((long)obj.get_tid(), new Team(obj));
+		teamsDB.put(String.valueOf(obj.get_tid()), new Team(obj));
 		
 		try
 		{
-			translator.save(obj);
+			TeamDAO.get_instance().save(obj);
 		}
 		catch (IOException e)
 		{
@@ -72,11 +64,11 @@ public class TeamService implements ICustomService<Long, Team>
 	{
 		if(obj == null) return false;
 		
-		teamsDB.remove((long)obj.get_tid());
+		teamsDB.remove(String.valueOf(obj.get_tid()));
 		
 		try
 		{
-			translator.delete(obj);
+			TeamDAO.get_instance().delete(obj);
 		}
 		catch (IOException e)
 		{
@@ -87,7 +79,7 @@ public class TeamService implements ICustomService<Long, Team>
 	}
 
 	@Override
-	public Team find(Long id)
+	public Team find(String id)
 	{
 		return teamsDB.get(id);
 	}
