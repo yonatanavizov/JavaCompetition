@@ -15,9 +15,4 @@ public class ContestDAO implements IDAO<Long, Contest>
 	{
 		
 	}
-	@Override
-	public Contest find(Long id)
-	{
-		return null;
-	}
 }

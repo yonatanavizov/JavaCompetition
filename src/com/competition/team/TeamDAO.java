@@ -12,22 +12,22 @@ import com.google.gson.reflect.TypeToken;
 
 //Reads the JSON file and writes to a JSON file, of all Teams, makes them into Team List.
 //Should only interact with Team and TeamDAOService
-public class TeamDAO implements IDAO<String, Team>
+public class TeamDAO implements IDAO<Integer, Team>
 {
-	private HashMap<String, Team[]> db; // SHould be private HashMap<Long, Team> db2;
-	private static Type teamListType = new TypeToken<ArrayList<Team>>(){}.getType();
+	private HashMap<Integer, Team> db; // SHould be private HashMap<Long, Team> db2;
+	private static Type teamListType = new TypeToken<HashMap<Integer, Team>>(){}.getType();
 	private static TeamDAO instance;
 	
 	private TeamDAO() // Singleton based private Constructor
 	{
-		db = new HashMap<String, Team[]>();
+		db = new HashMap<Integer, Team>();
 		try
 		{
 			init();
 		}
 		catch(Exception e)
 		{
-			System.out.println("Team DB empty, error recieved: " + e.getMessage());
+			System.out.println("Team DB JSON empty, error recieved: " + e.getMessage());
 		}
 	}
 	
@@ -44,9 +44,8 @@ public class TeamDAO implements IDAO<String, Team>
 	{
 		String contents = UtilityClass.ReadClass.FileToString(UtilityClass.ReadClass.TeamsJsonPath);
 		Gson gson = new Gson();
-		Type empMapType = new TypeToken<HashMap<String, Team[]>>() {}.getType();
 		
-		db = gson.fromJson(contents, empMapType);
+		db = gson.fromJson(contents, teamListType);
 	}
 	@Override
 	public void save(Team entity) throws IOException //Get a team and save into the JSON file
@@ -65,12 +64,12 @@ public class TeamDAO implements IDAO<String, Team>
 
 	public Team[] getTeams()
 	{
-		return db.get("teams");
+		return null;//db.get("teams");
 	}
 	
 	private void create_new_teamsArray(int addition)
 	{
-		int size = db.get("teams").length;
-		Team[] teams = new Team[size+addition];
+		//int size = db.get("teams").length;
+		//Team[] teams = new Team[size+addition];
 	}
 }

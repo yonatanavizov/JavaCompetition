@@ -18,10 +18,4 @@ public class MatchDAO implements IDAO<Long, Match>
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public Match find(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
