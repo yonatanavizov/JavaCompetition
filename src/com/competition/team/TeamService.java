@@ -24,7 +24,7 @@ public class TeamService implements ICustomService<String, Team>
 	{
 		for(int i = 0; i < teamsDB.size(); i++)
 		{
-			System.out.println(teamsDB.get(i).to_string());
+			System.out.println(teamsDB.get(String.valueOf(i)).to_string());
 		}
 	}
 

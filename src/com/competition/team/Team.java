@@ -18,7 +18,7 @@ public class Team
 	
 	public Team()
 	{
-		this.tid = 1;
+		this.tid = 0;
 		this.name="n/a";
 		this.game_type="football";
 		this.rank=Rank.beginner;
