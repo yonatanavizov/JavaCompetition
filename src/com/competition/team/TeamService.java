@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import com.competition.ISearchAlgoFamily;
+import com.competition.ISearchAlgoFamily.SearchResult;
+import com.competition.KMPSearchAlgo;
 import com.competition.src.ICustomService;
 
 //Takes the DAO of the Team, collects the List from it, and starts from here the LOGIC 
@@ -12,11 +14,13 @@ import com.competition.src.ICustomService;
 public class TeamService implements ICustomService<String, Team>
 {
 	private static TeamService instance;
+	ISearchAlgoFamily searcher;
 	private TeamDAO teamDao;
 	
 	
 	private TeamService()
 	{
+		searcher =  new KMPSearchAlgo();
 		teamDao = new TeamDAO();
 	}
 	
@@ -92,6 +96,21 @@ public class TeamService implements ICustomService<String, Team>
 	
 	public ArrayList<Team> find_by_summary(String phrase) // Activate the KMP
 	{
-		return null;
+		ArrayList<Team> foundResults = new ArrayList<Team>();
+		for(HashMap.Entry<String, Team> entry : teamDao.get_db().entrySet())
+		{
+			SearchResult res = searcher.Search(phrase, entry.getValue().get_summary());
+			if(res == SearchResult.NotFound)
+			{
+				continue;
+			}
+			foundResults.add(entry.getValue());
+		}
+		if(foundResults.isEmpty())
+		{
+			System.out.println("Did not find results in Team DB for -- " + phrase);
+			return null;
+		}
+		return foundResults;
 	}
 }

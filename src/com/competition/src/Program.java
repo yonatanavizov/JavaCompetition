@@ -15,8 +15,15 @@ public class Program
 		
 		TeamService.get_instance().insert(toAdd);
 		TeamService.get_instance().print_service();
+		TeamService.get_instance().find_by_summary("1976");
 		TeamService.get_instance().delete(toAdd);
 		TeamService.get_instance().print_service();
+		
 		System.out.println("end");
+		/*
+		 * TODO:
+		 * Re add the JAR of the KMP search. Make it static classes.
+		 * Now that TEAMs are ok, copy paste the idea to Matches and Contests.
+		 */
 	}
 }
