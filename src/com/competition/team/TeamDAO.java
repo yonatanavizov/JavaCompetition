@@ -16,12 +16,10 @@ import com.google.gson.reflect.TypeToken;
 public class TeamDAO implements IDAO<String, Team>
 {
 	private HashMap<String, Team> db; // SHould be private HashMap<Long, Team> db2;
-	public static Type teamListType = new TypeToken<HashMap<String, Team>>(){}.getType();
-	private static TeamDAO instance;
+	private static Type teamListType = new TypeToken<HashMap<String, Team>>(){}.getType();
 	
-	private TeamDAO() // Singleton based private Constructor
+	protected TeamDAO() // Singleton based private Constructor
 	{
-		System.out.println("inside TeamDAO CTOR");
 		db = new HashMap<String, Team>();
 		try
 		{
@@ -33,15 +31,6 @@ public class TeamDAO implements IDAO<String, Team>
 		}
 	}
 	
-	public static TeamDAO get_instance()
-	{
-        if (TeamDAO.instance == null)
-        {
-        	TeamDAO.instance = new TeamDAO();
-        }
-        return TeamDAO.instance;
-	}
-	
 	private void init() throws IOException
 	{
 		String contents = UtilityClass.ReadClass.FileToString(UtilityClass.TeamsJsonPath);
@@ -51,32 +40,42 @@ public class TeamDAO implements IDAO<String, Team>
 	}
 	@Override
 	public void save(Team entity) throws IOException //Get a team and save into the JSON file
-	{
-		if(db.containsKey(String.valueOf(entity.get_tid()))) // Update Functionality.
-		{
-			System.out.println("Need to update the ENTITY - " + entity.get_name());
-			return;
-		}
-		
+	{	
 		String json = UtilityClass.ReadClass.FileToString(UtilityClass.TeamsJsonPath);
 		Gson gson = new Gson();
-		
 		JsonObject jsonObj = gson.fromJson(json, JsonObject.class);
+		
+		if(db.containsKey(String.valueOf(entity.get_tid()))) //Update a value
+		{
+			jsonObj.remove(String.valueOf(entity.get_tid()));
+			db.replace(String.valueOf(entity.get_tid()), new Team(entity));
+		}
+		else
+		{
+			db.put(String.valueOf(entity.get_tid()), entity);
+		}
+		
 		jsonObj.add(String.valueOf(entity.get_tid()), new Gson().toJsonTree(entity));
-		System.out.println(jsonObj.toString());
 		UtilityClass.WriteClass.StringToFile(UtilityClass.TeamsJsonPath, jsonObj.toString());
+		
 	}
 
 	@Override
 	public void delete(Team entity) throws IOException // get a team, delete from DB and from JSON file
 	{
+		if(!db.containsKey(String.valueOf(entity.get_tid())))
+		{
+			System.out.println("Team DB does not contain said Team to delete.");
+			return;
+		}
 		String json = UtilityClass.ReadClass.FileToString(UtilityClass.TeamsJsonPath);
 		Gson gson = new Gson();
 		
 		JsonObject jsonObj = gson.fromJson(json, JsonObject.class);
 		jsonObj.remove(String.valueOf(entity.get_tid()));
-		System.out.println(jsonObj.toString());
+		//System.out.println(jsonObj.toString());
 		UtilityClass.WriteClass.StringToFile(UtilityClass.TeamsJsonPath, jsonObj.toString());
+		db.remove(String.valueOf(entity.get_tid()));
 	}
 	
 	public HashMap<String, Team> get_db()
@@ -86,8 +85,14 @@ public class TeamDAO implements IDAO<String, Team>
 	
 	public void print_service()
 	{
-		 for (HashMap.Entry<String, Team> entry : db.entrySet()) {
-		        System.out.println(entry.getValue().to_string());
-		    }
+		if(db.isEmpty())
+		{
+			System.out.println("The Team Database is empty.");
+			return;
+		}
+		for(HashMap.Entry<String, Team> entry : db.entrySet())
+		{
+			System.out.println(entry.getValue().to_string());
+		}
 	}
 }

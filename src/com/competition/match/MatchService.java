@@ -15,11 +15,6 @@ public class MatchService implements ICustomService<Integer, Match>
 		return null;
 	}
 
-	@Override
-	public void update_objects() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void print_service() {

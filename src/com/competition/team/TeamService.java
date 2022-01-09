@@ -11,45 +11,45 @@ import com.competition.src.ICustomService;
 //This is the class people will use for the logic of the application.
 public class TeamService implements ICustomService<String, Team>
 {
-	private HashMap<String, Team> teamsDB;
-	//private ISearchAlgoFamily searcher;//TODO: Fix it to Static Classes
-
-	public TeamService()
+	private static TeamService instance;
+	private TeamDAO teamDao;
+	
+	
+	private TeamService()
 	{
-		update_objects();
+		teamDao = new TeamDAO();
+	}
+	
+	public static TeamService get_instance()
+	{
+        if (TeamService.instance == null)
+        {
+        	TeamService.instance = new TeamService();
+        }
+        return TeamService.instance;
 	}
 	
 	@Override
 	public void print_service()
 	{
-		for(int i = 0; i < teamsDB.size(); i++)
-		{
-			System.out.println(teamsDB.get(String.valueOf(i)).to_string());
-		}
+		teamDao.print_service();
 	}
 
 	@Override
 	public HashMap<String, Team> get_objects()
 	{
-		return teamsDB;
+		return teamDao.get_db();
 	}
 
-	@Override
-	public void update_objects()
-	{
-		teamsDB = TeamDAO.get_instance().get_db();
-	}
 
 	@Override
 	public boolean insert(Team obj)
 	{
 		if(obj == null) return false;
 		
-		teamsDB.put(String.valueOf(obj.get_tid()), new Team(obj));
-		
 		try
 		{
-			TeamDAO.get_instance().save(obj);
+			teamDao.save(obj);
 		}
 		catch (IOException e)
 		{
@@ -63,12 +63,10 @@ public class TeamService implements ICustomService<String, Team>
 	public boolean delete(Team obj)
 	{
 		if(obj == null) return false;
-		
-		teamsDB.remove(String.valueOf(obj.get_tid()));
-		
+				
 		try
 		{
-			TeamDAO.get_instance().delete(obj);
+			teamDao.delete(obj);
 		}
 		catch (IOException e)
 		{
@@ -81,7 +79,15 @@ public class TeamService implements ICustomService<String, Team>
 	@Override
 	public Team find(String id)
 	{
-		return teamsDB.get(id);
+		try {
+			Team t = teamDao.get_db().get(id);
+			return t;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public ArrayList<Team> find_by_summary(String phrase) // Activate the KMP

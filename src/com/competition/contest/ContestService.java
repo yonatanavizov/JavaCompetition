@@ -14,11 +14,8 @@ public class ContestService implements ICustomService<Integer, Contest>
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public void update_objects() {
-		// TODO Auto-generated method stub
-		
-	}
+
+	
 	@Override
 	public void print_service() {
 		// TODO Auto-generated method stub
