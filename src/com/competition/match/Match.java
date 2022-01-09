@@ -1,7 +1,6 @@
 package com.competition.match;
 
 import com.competition.team.Team;
-import com.competition.team.Team.Rank;
 
 public class Match
 {

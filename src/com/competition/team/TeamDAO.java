@@ -86,9 +86,8 @@ public class TeamDAO implements IDAO<String, Team>
 	
 	public void print_service()
 	{
-		for(int i = 0; i < db.size(); i++)
-		{
-			System.out.println(db.get(String.valueOf(i)).to_string());
-		}
+		 for (HashMap.Entry<String, Team> entry : db.entrySet()) {
+		        System.out.println(entry.getValue().to_string());
+		    }
 	}
 }

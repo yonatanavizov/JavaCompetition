@@ -1,11 +1,15 @@
 package com.competition.team;
 
+import com.google.gson.annotations.SerializedName;
+
 //The teams that will be represented as a object in a JSON file.
 public class Team 
 {
 	public enum Rank
 	{
-		pro,adv,beginner;
+		@SerializedName("1") BEGINNER, 
+		@SerializedName("2") ADVANCED, 
+		@SerializedName("3") PROFESSIONAL; 
 	}
 	private int tid;
 	private int members;
@@ -21,7 +25,7 @@ public class Team
 		this.tid = 0;
 		this.name="n/a";
 		this.game_type="football";
-		this.rank=Rank.beginner;
+		this.rank=Rank.BEGINNER;
 		this.members=-1;
 		this.postion=-1;
 		this.win_loss_ratio=-1;
