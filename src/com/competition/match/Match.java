@@ -1,25 +1,27 @@
 package com.competition.match;
 
 import com.competition.team.Team;
+import com.google.gson.annotations.SerializedName;
 
 public class Match
 {
 	public enum OutCome
 	{
-		TeamAWon, TeamBWon, Tie, Undecided
+		@SerializedName("1") TeamAWon,
+		@SerializedName("2") TeamBWon,
+		@SerializedName("3") Tie,
+		@SerializedName("4") Undecided
 	}
 	private int id;
 	private Team a, b;
 	private OutCome outcome;
-	public Match ()
-	{
-		
-	}
+
 	public Match(Team a, Team b, int id)
 	{
 		this.a = new Team(a);
 		this.b = new Team(b);
 		this.id = id;
+		this.outcome = OutCome.Undecided;
 	}
 	public Match(Match other)
 	{
@@ -73,16 +75,5 @@ public class Match
 	public String toString() { 
 	      return "Match [ ID: "+id+", outcome: "+ outcome+ " Team A "+
 	a.get_name()+" VS "+" Team B "+b.get_name()+"]"; 
-	   }  
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	   }	
 }
