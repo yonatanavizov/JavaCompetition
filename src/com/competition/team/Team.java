@@ -46,7 +46,7 @@ public class Team
 	
 	public Team(Team other)
 	{
-		this.tid = other.get_tid();
+		this.tid = other.get_id();
 		this.name =other.get_name();
 		this.game_type=other.get_game_type();
 		this.rank=other.get_rank();
@@ -84,7 +84,7 @@ public class Team
 	{
 		return this.summary;
 	}
-	public int get_tid()
+	public int get_id()
 	{
 		return this.tid;
 	}
@@ -124,7 +124,7 @@ public class Team
 	{
 		this.summary = summary;
 	}
-	public void set_tid(int tid)
+	public void set_id(int tid)
 	{
 		this.tid = tid;
 	}

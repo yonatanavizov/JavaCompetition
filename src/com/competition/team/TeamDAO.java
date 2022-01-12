@@ -45,17 +45,17 @@ public class TeamDAO implements IDAO<String, Team>
 		Gson gson = new Gson();
 		JsonObject jsonObj = gson.fromJson(json, JsonObject.class);
 		
-		if(db.containsKey(String.valueOf(entity.get_tid()))) //Update a value
+		if(db.containsKey(String.valueOf(entity.get_id()))) //Update a value
 		{
-			jsonObj.remove(String.valueOf(entity.get_tid()));
-			db.replace(String.valueOf(entity.get_tid()), new Team(entity));
+			jsonObj.remove(String.valueOf(entity.get_id()));
+			db.replace(String.valueOf(entity.get_id()), new Team(entity));
 		}
 		else
 		{
-			db.put(String.valueOf(entity.get_tid()), entity);
+			db.put(String.valueOf(entity.get_id()), entity);
 		}
 		
-		jsonObj.add(String.valueOf(entity.get_tid()), new Gson().toJsonTree(entity));
+		jsonObj.add(String.valueOf(entity.get_id()), new Gson().toJsonTree(entity));
 		UtilityClass.WriteClass.StringToFile(UtilityClass.TeamsJsonPath, jsonObj.toString());
 		
 	}
@@ -63,7 +63,7 @@ public class TeamDAO implements IDAO<String, Team>
 	@Override
 	public void delete(Team entity) throws IOException // get a team, delete from DB and from JSON file
 	{
-		if(!db.containsKey(String.valueOf(entity.get_tid())))
+		if(!db.containsKey(String.valueOf(entity.get_id())))
 		{
 			System.out.println("Team DB does not contain said Team to delete.");
 			return;
@@ -72,10 +72,10 @@ public class TeamDAO implements IDAO<String, Team>
 		Gson gson = new Gson();
 		
 		JsonObject jsonObj = gson.fromJson(json, JsonObject.class);
-		jsonObj.remove(String.valueOf(entity.get_tid()));
+		jsonObj.remove(String.valueOf(entity.get_id()));
 		//System.out.println(jsonObj.toString());
 		UtilityClass.WriteClass.StringToFile(UtilityClass.TeamsJsonPath, jsonObj.toString());
-		db.remove(String.valueOf(entity.get_tid()));
+		db.remove(String.valueOf(entity.get_id()));
 	}
 	
 	public HashMap<String, Team> get_db()

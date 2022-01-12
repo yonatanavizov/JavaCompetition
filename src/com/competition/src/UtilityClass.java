@@ -18,6 +18,12 @@ public class UtilityClass
 			Paths.get(".").normalize().toAbsolutePath().toString(), 
 			"_EXTRA",
 			"Jsons","matches.json").toString();
+	
+	public static String CompetitonsJsonPath = Path.of(
+			Paths.get(".").normalize().toAbsolutePath().toString(), 
+			"_EXTRA",
+			"Jsons","competitons.json").toString();
+	
 	public static class ReadClass
 	{
 		public static String FileToString(String filePath) 

@@ -25,35 +25,62 @@ public class MatchDAO implements IDAO<String, Match>
 		
 		db = gson.fromJson(contents, matchDbType);
 	}
+	
 	@Override
-	public void save(Match entity) throws IOException {
+	public void save(Match entity) throws IOException
+	{
 		String json = UtilityClass.ReadClass.FileToString(UtilityClass.MatchesJsonPath);
 		Gson gson = new Gson();
 		JsonObject jsonObj = gson.fromJson(json, JsonObject.class);
 		
-		if(db.containsKey(String.valueOf(entity.GetID()))) //Update a value
+		if(db.containsKey(String.valueOf(entity.get_id()))) //Update a value
 		{
-			jsonObj.remove(String.valueOf(entity.GetID()));
-			db.replace(String.valueOf(entity.GetID()), new Match(entity));
+			jsonObj.remove(String.valueOf(entity.get_id()));
+			db.replace(String.valueOf(entity.get_id()), new Match(entity));
 		}
 		else
 		{
-			db.put(String.valueOf(entity.GetID()), entity);
+			db.put(String.valueOf(entity.get_id()), entity);
 		}
 		
-		jsonObj.add(String.valueOf(entity.GetID()), new Gson().toJsonTree(entity));
+		jsonObj.add(String.valueOf(entity.get_id()), new Gson().toJsonTree(entity));
 		UtilityClass.WriteClass.StringToFile(UtilityClass.MatchesJsonPath, jsonObj.toString());
 		
 	}
 
 	@Override
-	public void delete(Match entity) {
-		// TODO Auto-generated method stub
+	public void delete(Match entity) throws IOException
+	{
+		if(!db.containsKey(String.valueOf(entity.get_id())))
+		{
+			System.out.println("Team DB does not contain said Team to delete.");
+			return;
+		}
+		String json = UtilityClass.ReadClass.FileToString(UtilityClass.MatchesJsonPath);
+		Gson gson = new Gson();
 		
+		JsonObject jsonObj = gson.fromJson(json, JsonObject.class);
+		jsonObj.remove(String.valueOf(entity.get_id()));
+		UtilityClass.WriteClass.StringToFile(UtilityClass.MatchesJsonPath, jsonObj.toString());
+		db.remove(String.valueOf(entity.get_id()));
 	}
+	
 	@Override
-	public HashMap<String, Match> get_db() {
-		// TODO Auto-generated method stub
-		return null;
+	public HashMap<String, Match> get_db()
+	{
+		return db;
+	}
+	
+	protected void print_dao()
+	{
+		if(db.isEmpty())
+		{
+			System.out.println("The Match Database is empty.");
+			return;
+		}
+		for(HashMap.Entry<String, Match> entry : db.entrySet())
+		{
+			System.out.println(entry.getValue().to_string());
+		}
 	}
 }

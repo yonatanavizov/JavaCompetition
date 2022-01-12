@@ -12,6 +12,7 @@ public class Match
 		@SerializedName("3") Tie,
 		@SerializedName("4") Undecided
 	}
+	
 	private int id;
 	private Team a, b;
 	private OutCome outcome;
@@ -23,57 +24,57 @@ public class Match
 		this.id = id;
 		this.outcome = OutCome.Undecided;
 	}
+	
 	public Match(Match other)
 	{
-		this.id=other.id;
-		this.a=new Team(other.a);
-		this.b=new Team(other.b);
-		this.outcome=other.outcome;//?? problem
-		
+		this.id = other.id;
+		this.a = new Team(other.a);
+		this.b = new Team(other.b);
+		this.outcome = other.outcome;//?? problem
 	}
 	
-	public void SetOutCome(OutCome outcome)
+	public void set_outcome(OutCome outcome)
 	{
 		this.outcome = outcome;
 	}
 	
-	public OutCome GetoutCome()
+	public OutCome get_outcome()
 	{
 		return outcome;
 	}
 	
-	public void SetID(int id)
+	public void set_id(int id)
 	{
 		this.id = id;
 	}
 	
-	public int GetID()
+	public int get_id()
 	{
 		return id;
 	}
 	
-	public Team GetTeamA()
+	public Team get_team_a()
 	{
 		return a;
 	}
 	
-	public void SetTeamA(Team a)
+	public void set_team_a(Team a)
 	{
-		this.a= new Team(a);
+		this.a = new Team(a);
 	}
 	
-	public Team GetTeamB()
+	public Team get_team_b()
 	{
 		return b;
 	}
 	
-	public void SetTeamB(Team b)
+	public void set_team_b(Team b)
 	{
-		this.b= new Team(b);
+		this.b = new Team(b);
 	}
 	
-	public String toString() { 
-	      return "Match [ ID: "+id+", outcome: "+ outcome+ " Team A "+
-	a.get_name()+" VS "+" Team B "+b.get_name()+"]"; 
-	   }	
+	public String to_string()
+	{ 
+		return "Match [ ID: "+id+", outcome: "+ outcome+ " Team A "+ a.get_name() + " VS "+" Team B "+b.get_name()+"]"; 
+	}	
 }
