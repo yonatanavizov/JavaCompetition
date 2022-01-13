@@ -8,12 +8,14 @@ import com.competition.src.IDAO;
 import com.competition.src.UtilityClass;
 import com.google.gson.reflect.TypeToken;
 
+
+//Handles the JSON and Database Interactions with the ContestService.
 public class ContestDAO implements IDAO<String, Contest>
 {
 	private static Type contestDbType = new TypeToken<HashMap<String, Contest>>(){}.getType();
 	private HashMap<String, Contest> db;
 	
-	protected ContestDAO()
+	protected ContestDAO() // Created only by the Service
 	{
 		db = UtilityClass.DaoUtil.Init(UtilityClass.ContestsJsonPath, contestDbType);
 	}

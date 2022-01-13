@@ -3,9 +3,14 @@ package com.competition.match;
 import com.competition.team.Team;
 import com.google.gson.annotations.SerializedName;
 
+
+/*
+ * Match Data Object:
+ * This will hold a match that went between two teams, the outcome of the match as well.
+ */
 public class Match
 {
-	public enum OutCome
+	public enum OutCome // The outcome of the match to adjust the team's win lose ratio.
 	{
 		@SerializedName("Team_A_Won") Team_A_Won,
 		@SerializedName("Team_B_Won") Team_B_Won,

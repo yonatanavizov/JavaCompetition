@@ -2,7 +2,6 @@ package com.competition.src;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import com.competition.contest.Contest;
 import com.competition.contest.ContestService;
@@ -13,7 +12,8 @@ import com.competition.team.Team;
 import com.competition.team.Team.Rank;
 import com.competition.team.TeamService;
 
-
+// The starting point of the application
+// Currently used for Tests of the DB and Json Files.
 public class Program
 {
 	public static void main(String[] args)
@@ -24,11 +24,11 @@ public class Program
 		Team toAdd2 = new Team(1, "second team", "basket ball",r,2,22,(float) 0.22, "A different amount of lot of summary 1976 and all that.");
 		TeamService.get_instance().insert(toAdd);
 		TeamService.get_instance().insert(toAdd2);
-		//TeamService.get_instance().print_service();
-		//ArrayList<Team> teamsFound = TeamService.get_instance().find_by_summary("1976");
-		//TeamService.get_instance().delete(toAdd);
-		//TeamService.get_instance().delete(toAdd2);
-		//TeamService.get_instance().print_service();
+		// TeamService.get_instance().print_service();
+		// ArrayList<Team> teamsFound = TeamService.get_instance().find_by_summary("1976");
+		// TeamService.get_instance().delete(toAdd);
+		// TeamService.get_instance().delete(toAdd2);
+		// TeamService.get_instance().print_service();
 		
 		
 		Match m1 = new Match(toAdd, toAdd2, 0);

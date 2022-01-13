@@ -5,6 +5,11 @@ import java.util.HashMap;
 
 import com.competition.match.Match;
 
+/*
+ * Contest Data Object:
+ * Holds a Minor Database of the Contest itself, having a STRING for the level of the contest (Semi Final, Finals, Prelim..)
+ * 
+ */
 public class Contest
 {
 	String name;

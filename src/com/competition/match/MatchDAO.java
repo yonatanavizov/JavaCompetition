@@ -8,12 +8,13 @@ import com.competition.src.IDAO;
 import com.competition.src.UtilityClass;
 import com.google.gson.reflect.TypeToken;
 
+//Handles the JSON and Database connection to the MatchService.
 public class MatchDAO implements IDAO<String, Match>
 {
 	private static Type matchDbType = new TypeToken<HashMap<String, Match>>(){}.getType();
 	private HashMap<String, Match> db;
 	
-	protected MatchDAO()
+	protected MatchDAO() // Only created by the Service.
 	{
 		db = new HashMap<String, Match>();
 		try

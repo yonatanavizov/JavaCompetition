@@ -9,9 +9,8 @@ import com.competition.KMPSearchAlgo;
 import com.competition.src.ICustomService;
 import com.competition.src.UtilityClass;
 
-//Takes the DAO of the Team, collects the List from it, and starts from here the LOGIC 
-// we may need (Like sorts, or finding matches from here).
-//This is the class people will use for the logic of the application.
+// This class is a Singleton that will hold only 1 instance of the TeamDAO, which lets it handle a single running DB.
+// This class also has StringSearch need, so it has a special Searcher.
 public class TeamService implements ICustomService<String, Team>
 {
 	private static TeamService instance;

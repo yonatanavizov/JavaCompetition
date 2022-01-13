@@ -8,14 +8,14 @@ import com.competition.src.IDAO;
 import com.competition.src.UtilityClass;
 import com.google.gson.reflect.TypeToken;
 
-//Reads the JSON file and writes to a JSON file, of all Teams, makes them into Team List.
-//Should only interact with Team and TeamDAOService
+//Reads the JSON file and writes to a JSON file, of all Teams, makes them into Team hashMap.
+//Should only interact with Team and TeamService
 public class TeamDAO implements IDAO<String, Team>
 {
-	private HashMap<String, Team> db; // SHould be private HashMap<Long, Team> db2;
-	private static Type teamListType = new TypeToken<HashMap<String, Team>>(){}.getType();
+	private HashMap<String, Team> db;
+	private static Type teamListType = new TypeToken<HashMap<String, Team>>(){}.getType(); // Token for JSON serialize.
 	
-	protected TeamDAO() // Singleton based private Constructor
+	protected TeamDAO() // Will only be created by the Service.
 	{
 		db = new HashMap<String, Team>();
 		try

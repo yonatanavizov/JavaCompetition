@@ -6,7 +6,8 @@ import java.util.HashMap;
 import com.competition.src.ICustomService;
 import com.competition.src.UtilityClass;
 
-// Something here too. 
+//This class is a Singleton that will hold only 1 instance of the MatchDAO, which lets it handle a single running DB.
+
 public class MatchService implements ICustomService<String, Match>
 {
 	private static MatchService instace;

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+//Holds a lot of Static Classes that will come in handy for the project itself.
 public class UtilityClass
 {
 	public static String TeamsJsonPath = Path.of(
@@ -28,6 +29,7 @@ public class UtilityClass
 			"_EXTRA",
 			"Jsons","contests.json").toString();
 	
+	//A class dedicated to reading a file and returning a string of what it read. 
 	public static class ReadClass
 	{
 		public static String FileToString(String filePath) 
@@ -47,6 +49,7 @@ public class UtilityClass
 	    }
 	}
 	
+	//A class dedicated to writing to a file, getting the string and path to where to write it.
 	public static class WriteClass
 	{
 		public static void StringToFile(String filePath, String content) throws IOException
@@ -67,8 +70,12 @@ public class UtilityClass
 		}
 	}
 
+	//A class to handle all matters of JSON saving and deleteing, only used by IDAO classes.
 	public static class DaoUtil
 	{
+		// Gets a HashMap Database, an item to save, the id of the item, and path to save to.
+		// Saves the item inside of the given DB, while checking to see if the item already exists in it.
+		// If the item exists, it will update its value.
 		public static <OBJ> void save(HashMap<String,OBJ> db, OBJ entity, int id, String path) throws IOException //Get a team and save into the JSON file
 		{	
 			String json = UtilityClass.ReadClass.FileToString(path);
@@ -89,6 +96,9 @@ public class UtilityClass
 			UtilityClass.WriteClass.StringToFile(path, jsonObj.toString());
 		}
 		
+		// Gets a HashMap Database, the id of the item to delete, and path to write back to.
+		// Checks to see if the item exists inside of the DB
+		// Then would proceed to delete the item from both JSON file and DB HashMap.
 		public static <OBJ> void delete(HashMap<String,OBJ> db, int id, String path) throws IOException
 		{
 			if(!db.containsKey(String.valueOf(id)))
@@ -105,6 +115,7 @@ public class UtilityClass
 			db.remove(String.valueOf(id));
 		}
 		
+		// Prints the given DB by their toString functionality.
 		public static <OBJ> void print_service(HashMap<String,OBJ> db)
 		{
 			if(db.isEmpty())
@@ -118,8 +129,10 @@ public class UtilityClass
 			}
 		}
 		
+		// Initializes the Database HashMap from the given Json paths and files.
 		public static <OBJ> HashMap<String, OBJ> Init(String path, Type type)
 		{
+			//TODO: Add a check if the file actually exists, if not, create it.
 			String contents = UtilityClass.ReadClass.FileToString(path);
 			Gson gson = new Gson();
 			return gson.fromJson(contents, type);
