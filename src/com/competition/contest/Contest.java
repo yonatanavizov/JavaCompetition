@@ -13,7 +13,9 @@ public class Contest
 	
 	public Contest()
 	{
-		
+		this.matches = new HashMap<Integer, List<Match>>();
+		this.name="None";
+		this.id=0;
 	}
 	
 	public Contest(Contest other)
@@ -28,32 +30,34 @@ public class Contest
 		this.id=id;
 		this.matches = new HashMap<Integer, List<Match>>();
 	}
-	public int GetID()
+	public int get_id()
 	{
 		return id;
 	}
-	public String GetName()
+	public String get_name()
 	{
 		return name;
 	}
-	public void SetName(String name)
+	public void set_name(String name)
 	{
 		this.name=name;
 	}
-	public void SetID(int id)
+	public void set_id(int id)
 	{
 		this.id=id;
 	}
-	public HashMap<Integer, List<Match>> GetMatches()
+	public HashMap<Integer, List<Match>> get_matches()
 	{
 		return matches;
 	}
-	public void SetMatches(HashMap<Integer, List<Match>> other)
+	public void set_matches(HashMap<Integer, List<Match>> other)
 	{
 		this.matches = new HashMap<Integer, List<Match>>(other);
 	}
 	
-	
-	
-	
+	public String toString() // Needs to print the whole matches.
+	{
+		String s = "[ Contest id: " + this.id + " name: " + this.name + " ]";
+		return s;
+	}
 }

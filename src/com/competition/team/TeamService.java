@@ -7,6 +7,7 @@ import com.competition.ISearchAlgoFamily;
 import com.competition.ISearchAlgoFamily.SearchResult;
 import com.competition.KMPSearchAlgo;
 import com.competition.src.ICustomService;
+import com.competition.src.UtilityClass;
 
 //Takes the DAO of the Team, collects the List from it, and starts from here the LOGIC 
 // we may need (Like sorts, or finding matches from here).
@@ -36,7 +37,8 @@ public class TeamService implements ICustomService<String, Team>
 	@Override
 	public void print_service()
 	{
-		teamDao.print_service();
+		//teamDao.print_service();
+		UtilityClass.DaoUtil.print_service(teamDao.get_db());
 	}
 
 	@Override

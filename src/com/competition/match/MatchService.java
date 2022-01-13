@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import com.competition.src.ICustomService;
+import com.competition.src.UtilityClass;
 
 // Something here too. 
 public class MatchService implements ICustomService<String, Match>
@@ -35,7 +36,7 @@ public class MatchService implements ICustomService<String, Match>
 	@Override
 	public void print_service()
 	{
-		dao.print_dao();
+		UtilityClass.DaoUtil.print_service(dao.get_db());
 	}
 
 	@Override

@@ -7,8 +7,8 @@ public class Match
 {
 	public enum OutCome
 	{
-		@SerializedName("1") TeamAWon,
-		@SerializedName("2") TeamBWon,
+		@SerializedName("1") Team_A_Won,
+		@SerializedName("2") Team_B_Won,
 		@SerializedName("3") Tie,
 		@SerializedName("4") Undecided
 	}
@@ -73,8 +73,8 @@ public class Match
 		this.b = new Team(b);
 	}
 	
-	public String to_string()
+	public String toString()
 	{ 
-		return "Match [ ID: "+id+", outcome: "+ outcome+ " Team A "+ a.get_name() + " VS "+" Team B "+b.get_name()+"]"; 
+		return "Match [ ID: "+id+" | outcome: "+ outcome+ " | Team A: "+ a.get_name() + " .VS. "+" Team B: "+b.get_name()+"]"; 
 	}	
 }

@@ -88,7 +88,7 @@ public class Team
 	{
 		return this.tid;
 	}
-	public String to_string()
+	public String toString()
 	{
 		String str = "id: " + tid + " [name: " + name + ", game_type: " + game_type + 
 				", rank: " + rank + ", members: " + members + ", postion: " + postion + 

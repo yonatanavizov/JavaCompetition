@@ -27,10 +27,13 @@ public class Program
 		//TeamService.get_instance().delete(toAdd2);
 		//TeamService.get_instance().print_service();
 		Match m1 = new Match(toAdd, toAdd2, 0);
-		m1.set_outcome(OutCome.TeamAWon);
+		m1.set_outcome(OutCome.Team_A_Won);
+		//System.out.println(m1.to_string());
+		
 		
 		MatchService.get_instance().insert(m1);
 		MatchService.get_instance().print_service();
+		
 		System.out.println("end");
 	}
 }
