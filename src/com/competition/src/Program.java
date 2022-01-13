@@ -1,3 +1,15 @@
+/* 
+ * Project Summary:
+ * The project is a Competition handle for various sports.
+ * It contains the functionality of added teams, matches, and contests.
+ * At the end, you can also display the contests.
+ * You can also find specific teams by their Summary Description via a word of your choice. 
+ * 
+ * Project Created by: 
+ * Yonatan Avizov ID: 318432101
+ * Asaf Dangoor ID: 313307340
+ */
+
 package com.competition.src;
 
 import java.util.ArrayList;
