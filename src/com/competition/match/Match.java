@@ -7,10 +7,10 @@ public class Match
 {
 	public enum OutCome
 	{
-		@SerializedName("1") Team_A_Won,
-		@SerializedName("2") Team_B_Won,
-		@SerializedName("3") Tie,
-		@SerializedName("4") Undecided
+		@SerializedName("Team_A_Won") Team_A_Won,
+		@SerializedName("Team_B_Won") Team_B_Won,
+		@SerializedName("Tie") Tie,
+		@SerializedName("Undecided") Undecided
 	}
 	
 	private int id;

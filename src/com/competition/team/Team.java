@@ -7,9 +7,9 @@ public class Team
 {
 	public enum Rank
 	{
-		@SerializedName("1") BEGINNER, 
-		@SerializedName("2") ADVANCED, 
-		@SerializedName("3") PROFESSIONAL; 
+		@SerializedName("BEGINNER") BEGINNER, 
+		@SerializedName("ADVANCED") ADVANCED, 
+		@SerializedName("PROFESSIONAL") PROFESSIONAL; 
 	}
 	private int tid;
 	private int members;
