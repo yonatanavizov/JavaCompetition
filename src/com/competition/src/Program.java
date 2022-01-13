@@ -2,7 +2,10 @@ package com.competition.src;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import com.competition.contest.Contest;
+import com.competition.contest.ContestService;
 import com.competition.match.Match;
 import com.competition.match.Match.OutCome;
 import com.competition.match.MatchService;
@@ -26,13 +29,24 @@ public class Program
 		//TeamService.get_instance().delete(toAdd);
 		//TeamService.get_instance().delete(toAdd2);
 		//TeamService.get_instance().print_service();
+		
+		
 		Match m1 = new Match(toAdd, toAdd2, 0);
 		m1.set_outcome(OutCome.Team_A_Won);
 		//System.out.println(m1.to_string());
+		//MatchService.get_instance().insert(m1);
+		//MatchService.get_instance().print_service();
 		
 		
-		MatchService.get_instance().insert(m1);
-		MatchService.get_instance().print_service();
+		Contest c1 = new Contest();
+		HashMap<String, ArrayList<Match>> toAddToCon = new HashMap<String, ArrayList<Match>>();
+		toAddToCon.put("Start", new ArrayList<Match>());
+		
+		c1.set_matches(toAddToCon);
+		c1.add_match(m1, "Start");
+		
+		ContestService.get_instance().insert(c1);
+		ContestService.get_instance().print_service();
 		
 		System.out.println("end");
 	}

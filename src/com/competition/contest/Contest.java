@@ -1,7 +1,7 @@
 package com.competition.contest;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import com.competition.match.Match;
 
@@ -9,18 +9,18 @@ public class Contest
 {
 	String name;
 	int id;
-	HashMap<Integer, List<Match>> matches;
+	HashMap<String, ArrayList<Match>> matches;
 	
 	public Contest()
 	{
-		this.matches = new HashMap<Integer, List<Match>>();
+		this.matches = new HashMap<String, ArrayList<Match>>();
 		this.name="None";
 		this.id=0;
 	}
 	
 	public Contest(Contest other)
 	{
-		this.matches = new HashMap<Integer, List<Match>>(other.matches);
+		this.matches = new HashMap<String, ArrayList<Match>>(other.matches);
 		this.name=other.name;
 		this.id=other.id;
 	}
@@ -28,7 +28,7 @@ public class Contest
 	{
 		this.name=name;
 		this.id=id;
-		this.matches = new HashMap<Integer, List<Match>>();
+		this.matches = new HashMap<String, ArrayList<Match>>();
 	}
 	public int get_id()
 	{
@@ -46,18 +46,26 @@ public class Contest
 	{
 		this.id=id;
 	}
-	public HashMap<Integer, List<Match>> get_matches()
+	public HashMap<String, ArrayList<Match>> get_matches()
 	{
 		return matches;
 	}
-	public void set_matches(HashMap<Integer, List<Match>> other)
+	public void set_matches(HashMap<String, ArrayList<Match>> other)
 	{
-		this.matches = new HashMap<Integer, List<Match>>(other);
+		this.matches = new HashMap<String, ArrayList<Match>>(other);
 	}
 	
+	public void add_match(Match mat, String level)
+	{
+		this.matches.get(level).add(mat);
+	}
+	public void remove_match(Match mat, String level)
+	{
+		this.matches.get(level).remove(mat);
+	}
 	public String toString() // Needs to print the whole matches.
 	{
-		String s = "[ Contest id: " + this.id + " name: " + this.name + " ]";
+		String s = "[ Contest id: " + this.id + " name: " + this.name + " Amount: " + matches.size() + " ]";
 		return s;
 	}
 }

@@ -6,9 +6,6 @@ import java.util.HashMap;
 
 import com.competition.src.IDAO;
 import com.competition.src.UtilityClass;
-import com.competition.team.Team;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 public class MatchDAO implements IDAO<String, Match>

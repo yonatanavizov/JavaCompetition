@@ -1,25 +1,38 @@
 package com.competition.contest;
 
-import java.io.Serializable;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 
 import com.competition.src.IDAO;
+import com.competition.src.UtilityClass;
+import com.google.gson.reflect.TypeToken;
 
-public class ContestDAO implements IDAO<Long, Contest>
+public class ContestDAO implements IDAO<String, Contest>
 {
-	@Override
-	public void save(Contest entity)
+	private static Type contestDbType = new TypeToken<HashMap<String, Contest>>(){}.getType();
+	private HashMap<String, Contest> db;
+	
+	protected ContestDAO()
 	{
-		
+		db = UtilityClass.DaoUtil.Init(UtilityClass.ContestsJsonPath, contestDbType);
 	}
+	
 	@Override
-	public void delete(Contest entity)
+	public void save(Contest entity) throws IOException
 	{
-		
+		UtilityClass.DaoUtil.save(db, new Contest(entity), entity.get_id(), UtilityClass.ContestsJsonPath);
 	}
+
 	@Override
-	public HashMap<Long, Contest> get_db() {
-		// TODO Auto-generated method stub
-		return null;
+	public void delete(Contest entity) throws IOException
+	{
+		UtilityClass.DaoUtil.delete(db, entity.get_id(), UtilityClass.ContestsJsonPath);
+	}
+	
+	@Override
+	public HashMap<String, Contest> get_db()
+	{
+		return db;
 	}
 }

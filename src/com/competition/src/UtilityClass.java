@@ -8,8 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-
-import com.competition.team.Team;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -25,10 +23,10 @@ public class UtilityClass
 			"_EXTRA",
 			"Jsons","matches.json").toString();
 	
-	public static String CompetitonsJsonPath = Path.of(
+	public static String ContestsJsonPath = Path.of(
 			Paths.get(".").normalize().toAbsolutePath().toString(), 
 			"_EXTRA",
-			"Jsons","competitons.json").toString();
+			"Jsons","contests.json").toString();
 	
 	public static class ReadClass
 	{

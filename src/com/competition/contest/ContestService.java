@@ -1,40 +1,72 @@
 package com.competition.contest;
 
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import com.competition.src.*;
 
-public class ContestService implements ICustomService<Integer, Contest>
+public class ContestService implements ICustomService<String, Contest>
 {
+	private static ContestService instance;
+	ContestDAO dao;
 	
-	List<Contest> contestsDB;
-	ContestDAO translator;
+	private ContestService()
+	{
+		dao = new ContestDAO();
+	}
+	
+	public static ContestService get_instance()
+	{
+		if(instance == null)
+		{
+			instance = new ContestService();
+		}
+		
+		return instance;
+	}
+	
 	@Override
-	public HashMap<Integer, Contest> get_objects() {
-		// TODO Auto-generated method stub
-		return null;
+	public HashMap<String, Contest> get_objects()
+	{
+		return dao.get_db();
 	}
 
 	
 	@Override
-	public void print_service() {
-		// TODO Auto-generated method stub
-		
+	public void print_service()
+	{
+		UtilityClass.DaoUtil.print_service(dao.get_db());
 	}
 	@Override
-	public boolean insert(Contest obj) {
-		// TODO Auto-generated method stub
+	public boolean insert(Contest obj)
+	{
+		try {
+			dao.save(obj);
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
+
 	@Override
-	public boolean delete(Contest obj) {
-		// TODO Auto-generated method stub
+	public boolean delete(Contest obj)
+	{
+		try {
+			dao.delete(obj);
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 	}
+
 	@Override
-	public Contest find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Contest find(String id)
+	{
+		return dao.get_db().get(id);
 	}
+
 	
 }

@@ -44,11 +44,12 @@ public class MatchService implements ICustomService<String, Match>
 	{
 		try {
 			dao.save(obj);
+			return true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return true;
+		return false;
 	}
 
 	@Override
@@ -56,6 +57,7 @@ public class MatchService implements ICustomService<String, Match>
 	{
 		try {
 			dao.delete(obj);
+			return true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
