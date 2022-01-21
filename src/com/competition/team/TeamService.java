@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import com.competition.ISearchAlgoFamily;
 import com.competition.ISearchAlgoFamily.SearchResult;
+import com.competition.utility.ICustomService;
+import com.competition.utility.UtilityClass;
 import com.competition.KMPSearchAlgo;
-import com.competition.src.ICustomService;
-import com.competition.src.UtilityClass;
 
 // This class is a Singleton that will hold only 1 instance of the TeamDAO, which lets it handle a single running DB.
 // This class also has StringSearch need, so it has a special Searcher.

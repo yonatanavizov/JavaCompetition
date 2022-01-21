@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-import com.competition.src.IDAO;
-import com.competition.src.UtilityClass;
+import com.competition.utility.IDAO;
+import com.competition.utility.UtilityClass;
 import com.google.gson.reflect.TypeToken;
 
 //Handles the JSON and Database connection to the MatchService.

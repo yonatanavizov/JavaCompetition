@@ -3,8 +3,8 @@ package com.competition.match;
 import java.io.IOException;
 import java.util.HashMap;
 
-import com.competition.src.ICustomService;
-import com.competition.src.UtilityClass;
+import com.competition.utility.ICustomService;
+import com.competition.utility.UtilityClass;
 
 //This class is a Singleton that will hold only 1 instance of the MatchDAO, which lets it handle a single running DB.
 

@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-import com.competition.src.IDAO;
-import com.competition.src.UtilityClass;
+import com.competition.utility.IDAO;
+import com.competition.utility.UtilityClass;
 import com.google.gson.reflect.TypeToken;
 
 //Reads the JSON file and writes to a JSON file, of all Teams, makes them into Team hashMap.

@@ -1,4 +1,4 @@
-package com.competition.src;
+package com.competition.utility;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
