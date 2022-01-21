@@ -35,6 +35,7 @@ public class MatchServiceTest
 	
 	public void Init()
 	{
+		MatchService ms = new MatchService();
 		testDb = new HashMap<String, Match>();
 		Rank r = Rank.ADVANCED;
 		Team toAdd = new Team(0, "first team", "basket ball",r,1,11,(float) 0.11, "A lot of summaryfor ther year 1976 and all that .");
@@ -42,7 +43,7 @@ public class MatchServiceTest
 		Match m1 = new Match(toAdd, toAdd2, 0);
 		m1.set_outcome(OutCome.Team_A_Won);
 		
-		requestedDb = MatchService.get_instance().get_objects();
+		requestedDb = ms.get_objects();
 	}
 	
 	@Test

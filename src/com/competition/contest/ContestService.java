@@ -2,29 +2,17 @@ package com.competition.contest;
 
 import java.io.IOException;
 import java.util.HashMap;
-import com.competition.src.*;
 import com.competition.utility.ICustomService;
 import com.competition.utility.UtilityClass;
 
 //This class is a Singleton that will hold only 1 instance of the ContestDAO, which lets it handle a single running DB.
 public class ContestService implements ICustomService<String, Contest>
 {
-	private static ContestService instance;
 	ContestDAO dao;
 	
-	private ContestService()
+	public ContestService()
 	{
 		dao = new ContestDAO();
-	}
-	
-	public static ContestService get_instance()
-	{
-		if(instance == null)
-		{
-			instance = new ContestService();
-		}
-		
-		return instance;
 	}
 	
 	@Override

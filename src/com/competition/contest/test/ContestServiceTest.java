@@ -36,6 +36,7 @@ public class ContestServiceTest
 	
 	public void Init()
 	{
+		ContestService cs = new ContestService();
 		testDb = new HashMap<String, Contest>();
 		Rank r = Rank.ADVANCED;
 		Team toAdd = new Team(0, "first team", "basket ball",r,1,11,(float) 0.11, "A lot of summaryfor ther year 1976 and all that .");
@@ -47,7 +48,7 @@ public class ContestServiceTest
 		toAddToCon.put("Start", new ArrayList<Match>());
 		
 		testDb.put("0", c1);
-		requestedDb = ContestService.get_instance().get_objects();
+		requestedDb = cs.get_objects();
 	}
 	
 	@Test

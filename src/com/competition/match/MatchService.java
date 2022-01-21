@@ -10,21 +10,11 @@ import com.competition.utility.UtilityClass;
 
 public class MatchService implements ICustomService<String, Match>
 {
-	private static MatchService instace;
 	private MatchDAO dao;
 	
-	private MatchService()
+	public MatchService()
 	{
 		dao = new MatchDAO();
-	}
-	
-	public static MatchService get_instance()
-	{
-		if(instace == null)
-		{
-			instace = new MatchService();
-		}
-		return instace;
 	}
 	
 	@Override

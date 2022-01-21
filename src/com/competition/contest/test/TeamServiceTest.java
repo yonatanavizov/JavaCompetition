@@ -33,13 +33,14 @@ public class TeamServiceTest {
 	
 	public void Init()
 	{
+		TeamService ts = new TeamService();
 		testDb = new HashMap<String, Team>();
 		Rank r = Rank.ADVANCED;
 		Team toAdd = new Team(0, "first team", "basket ball",r,1,11,(float) 0.11, "A lot of summaryfor ther year 1976 and all that .");
 		Team toAdd2 = new Team(1, "second team", "basket ball",r,2,22,(float) 0.22, "A different amount of lot of summary 1976 and all that.");
 		testDb.put(String.valueOf(toAdd.get_id()), toAdd);
 		testDb.put(String.valueOf(toAdd2.get_id()), toAdd2);
-		requestedDb = TeamService.get_instance().get_objects();
+		requestedDb = ts.get_objects();
 	}
 	
 	@Test

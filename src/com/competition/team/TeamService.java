@@ -13,25 +13,16 @@ import com.competition.KMPSearchAlgo;
 // This class also has StringSearch need, so it has a special Searcher.
 public class TeamService implements ICustomService<String, Team>
 {
-	private static TeamService instance;
 	ISearchAlgoFamily searcher;
 	private TeamDAO teamDao;
 	
 	
-	private TeamService()
+	public TeamService()
 	{
 		searcher =  new KMPSearchAlgo();
 		teamDao = new TeamDAO();
 	}
 	
-	public static TeamService get_instance()
-	{
-        if (TeamService.instance == null)
-        {
-        	TeamService.instance = new TeamService();
-        }
-        return TeamService.instance;
-	}
 	
 	@Override
 	public void print_service()
