@@ -1,5 +1,6 @@
 package com.competition.utility;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -47,6 +48,18 @@ public class UtilityClass
 	 
 	        return content;
 	    }
+		
+		public static String ReadAllLines(BufferedReader reader) throws IOException {
+		    StringBuilder content = new StringBuilder();
+		    String line;
+		    
+		    while ((line = reader.readLine()) != null) {
+		        content.append(line);
+		        content.append(System.lineSeparator());
+		    }
+
+		    return content.toString();
+		}
 	}
 	
 	//A class dedicated to writing to a file, getting the string and path to where to write it.

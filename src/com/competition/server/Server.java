@@ -33,12 +33,19 @@ public class Server implements Runnable
 			{
 				Socket socket = serverSocket.accept();
 				System.out.println("Connection accept: " + socket); // Who is connecting.
+				
+				//Read Data From Client
 				InputStream input = socket.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(input));
- 
+                String s = reader.readLine();
+                //HandleRequest handler = new HandleRequest(reader);
+                System.out.println(s);
+                //System.out.println("data got: " + handler.get_request());
+  
+                //Send back this to client
                 OutputStream output = socket.getOutputStream();
                 PrintWriter writer = new PrintWriter(output, true);
-				
+				writer.write("Hello there -- " + s);
                 
                 reader.close();
                 writer.close();
@@ -50,6 +57,7 @@ public class Server implements Runnable
 		{
 			e.printStackTrace();
 		}
+		System.out.println(">>Server terminated.");
 		/*
 			3. Read data from the client via an InputStream obtained from the client socket.
 			3 == HandleRequest
