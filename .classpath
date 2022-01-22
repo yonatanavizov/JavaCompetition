@@ -8,9 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="_EXTRA/Jars/StringSearchAlgorithmModule.jar"/>
 	<classpathentry kind="lib" path="D:/School Projects/Java Projects/JavaCompetition/_EXTRA/Jars/gson-2.8.2.jar"/>
-	<classpathentry kind="lib" path="_EXTRA/Jsons/contests.json"/>
-	<classpathentry kind="lib" path="_EXTRA/Jsons/matches.json"/>
-	<classpathentry kind="lib" path="_EXTRA/Jsons/teams.json"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
