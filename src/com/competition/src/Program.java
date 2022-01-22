@@ -12,6 +12,7 @@
 
 package com.competition.src;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -20,6 +21,7 @@ import com.competition.contest.ContestService;
 import com.competition.match.Match;
 import com.competition.match.Match.OutCome;
 import com.competition.match.MatchService;
+import com.competition.server.Server;
 import com.competition.team.Team;
 import com.competition.team.Team.Rank;
 import com.competition.team.TeamService;
@@ -31,6 +33,7 @@ public class Program
 	public static void main(String[] args)
 	{
 		System.out.println("start");
+		/*
 		Rank r = Rank.ADVANCED;
 		Team toAdd = new Team(0, "first team", "basket ball",r,1,11,(float) 0.11, "A lot of summaryfor ther year 1976 and all that .");
 		Team toAdd2 = new Team(1, "second team", "basket ball",r,2,22,(float) 0.22, "A different amount of lot of summary 1976 and all that.");
@@ -62,7 +65,17 @@ public class Program
 		ContestService cs = new ContestService();
 		cs.insert(c1);
 		cs.print_service();
+		*/
 		
+		try {
+			Server serv = new Server(9876);
+			Thread t1 = new Thread(serv);
+			
+			t1.start();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("end");
 	}
 }
