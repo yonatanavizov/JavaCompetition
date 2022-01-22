@@ -9,9 +9,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.competition.team.Team;
-import com.competition.team.Team.Rank;
-import com.competition.team.TeamService;
+import com.competition.dm.Team;
+import com.competition.dm.Team.Rank;
+import com.competition.service.TeamService;
 
 public class TeamServiceTest {
 	HashMap<String, Team> testDb;

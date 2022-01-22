@@ -1,10 +1,10 @@
-package com.competition.team;
+package com.competition.dao;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-import com.competition.utility.IDAO;
+import com.competition.dm.Team;
 import com.competition.utility.UtilityClass;
 import com.google.gson.reflect.TypeToken;
 
@@ -15,7 +15,7 @@ public class TeamDAO implements IDAO<String, Team>
 	private HashMap<String, Team> db;
 	private static Type teamListType = new TypeToken<HashMap<String, Team>>(){}.getType(); // Token for JSON serialize.
 	
-	protected TeamDAO() // Will only be created by the Service.
+	public TeamDAO() // Will only be created by the Service.
 	{
 		db = new HashMap<String, Team>();
 		try

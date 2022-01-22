@@ -1,4 +1,4 @@
-package com.competition.team;
+package com.competition.dm;
 
 import com.google.gson.annotations.SerializedName;
 

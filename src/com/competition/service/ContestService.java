@@ -1,37 +1,36 @@
-package com.competition.match;
+package com.competition.service;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-import com.competition.utility.ICustomService;
+import com.competition.dao.ContestDAO;
+import com.competition.dm.Contest;
 import com.competition.utility.UtilityClass;
 
-//This class is a Singleton that will hold only 1 instance of the MatchDAO, which lets it handle a single running DB.
-
-public class MatchService implements ICustomService<String, Match>
+//This class is a Singleton that will hold only 1 instance of the ContestDAO, which lets it handle a single running DB.
+public class ContestService implements ICustomService<String, Contest>
 {
-	private MatchDAO dao;
+	ContestDAO dao;
 	
-	public MatchService()
+	public ContestService()
 	{
-		dao = new MatchDAO();
+		dao = new ContestDAO();
 	}
 	
 	@Override
-	public HashMap<String, Match> get_objects()
+	public HashMap<String, Contest> get_objects()
 	{
 		return dao.get_db();
 	}
 
-
+	
 	@Override
 	public void print_service()
 	{
 		UtilityClass.DaoUtil.print_service(dao.get_db());
 	}
-
 	@Override
-	public boolean insert(Match obj)
+	public boolean insert(Contest obj)
 	{
 		try {
 			dao.save(obj);
@@ -44,7 +43,7 @@ public class MatchService implements ICustomService<String, Match>
 	}
 
 	@Override
-	public boolean delete(Match obj)
+	public boolean delete(Contest obj)
 	{
 		try {
 			dao.delete(obj);
@@ -57,9 +56,10 @@ public class MatchService implements ICustomService<String, Match>
 	}
 
 	@Override
-	public Match find(String id)
+	public Contest find(String id)
 	{
 		return dao.get_db().get(id);
 	}
 
+	
 }

@@ -10,12 +10,12 @@ import java.util.HashMap;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
-import com.competition.contest.Contest;
-import com.competition.contest.ContestService;
-import com.competition.match.Match;
-import com.competition.match.Match.OutCome;
-import com.competition.team.Team;
-import com.competition.team.Team.Rank;
+import com.competition.dm.Contest;
+import com.competition.dm.Match;
+import com.competition.dm.Team;
+import com.competition.dm.Match.OutCome;
+import com.competition.dm.Team.Rank;
+import com.competition.service.ContestService;
 
 public class ContestServiceTest
 {

@@ -1,10 +1,10 @@
-package com.competition.contest;
+package com.competition.dao;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-import com.competition.utility.IDAO;
+import com.competition.dm.Contest;
 import com.competition.utility.UtilityClass;
 import com.google.gson.reflect.TypeToken;
 
@@ -15,7 +15,7 @@ public class ContestDAO implements IDAO<String, Contest>
 	private static Type contestDbType = new TypeToken<HashMap<String, Contest>>(){}.getType();
 	private HashMap<String, Contest> db;
 	
-	protected ContestDAO() // Created only by the Service
+	public ContestDAO() // Created only by the Service
 	{
 		db = UtilityClass.DaoUtil.Init(UtilityClass.ContestsJsonPath, contestDbType);
 	}

@@ -1,9 +1,7 @@
-package com.competition.contest;
+package com.competition.dm;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import com.competition.match.Match;
 
 /*
  * Contest Data Object:

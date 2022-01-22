@@ -1,4 +1,4 @@
-package com.competition.utility;
+package com.competition.service;
 
 import java.util.HashMap;
 

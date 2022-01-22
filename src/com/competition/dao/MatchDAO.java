@@ -1,10 +1,10 @@
-package com.competition.match;
+package com.competition.dao;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-import com.competition.utility.IDAO;
+import com.competition.dm.Match;
 import com.competition.utility.UtilityClass;
 import com.google.gson.reflect.TypeToken;
 
@@ -14,7 +14,7 @@ public class MatchDAO implements IDAO<String, Match>
 	private static Type matchDbType = new TypeToken<HashMap<String, Match>>(){}.getType();
 	private HashMap<String, Match> db;
 	
-	protected MatchDAO() // Only created by the Service.
+	public MatchDAO() // Only created by the Service.
 	{
 		db = new HashMap<String, Match>();
 		try

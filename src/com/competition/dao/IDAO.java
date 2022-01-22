@@ -1,4 +1,4 @@
-package com.competition.utility;
+package com.competition.dao;
 
 import java.io.IOException;
 import java.util.HashMap;

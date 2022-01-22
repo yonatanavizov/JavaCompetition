@@ -16,15 +16,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.competition.contest.Contest;
-import com.competition.contest.ContestService;
-import com.competition.match.Match;
-import com.competition.match.Match.OutCome;
-import com.competition.match.MatchService;
+import com.competition.dm.Contest;
+import com.competition.dm.Match;
+import com.competition.dm.Team;
+import com.competition.dm.Match.OutCome;
+import com.competition.dm.Team.Rank;
 import com.competition.server.Server;
-import com.competition.team.Team;
-import com.competition.team.Team.Rank;
-import com.competition.team.TeamService;
+import com.competition.service.ContestService;
+import com.competition.service.MatchService;
+import com.competition.service.TeamService;
 
 // The starting point of the application
 // Currently used for Tests of the DB and Json Files.
