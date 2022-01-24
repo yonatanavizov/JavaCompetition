@@ -133,7 +133,7 @@ public class UtilityClass
 		{
 			if(db.isEmpty())
 			{
-				System.out.println("The Team Database is empty.");
+				System.out.println("The Database is empty.");
 				return;
 			}
 			for(HashMap.Entry<String, OBJ> entry : db.entrySet())

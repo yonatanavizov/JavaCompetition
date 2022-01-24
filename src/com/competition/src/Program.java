@@ -15,6 +15,7 @@ package com.competition.src;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.competition.auth.AuthenticationService;
 import com.competition.dm.Contest;
 import com.competition.dm.Match;
 import com.competition.dm.Team;
@@ -32,7 +33,16 @@ public class Program
 	public static void main(String[] args)
 	{
 		System.out.println("start");
-		Rank r = Rank.ADVANCED;
+		String file = "c:\\\\\\\\TEMP\\\\\\\\users.txt";
+		AuthenticationService auth = new AuthenticationService(file);
+		auth.addUser("Asa12f", "gggff");
+		auth.addUser("Reee", "asda");
+		auth.print();
+		auth.removeUser("Reee");
+		auth.print();
+		
+		System.out.println(auth.auth("Asa12f", "ddd"));
+		/*Rank r = Rank.ADVANCED;
 		Team toAdd = new Team(0, "first team", "basket ball",r,1,11,(float) 0.11, "A lot of summaryfor ther year 1976 and all that .");
 		Team toAdd2 = new Team(1, "second team", "basket ball",r,2,22,(float) 0.22, "A different amount of lot of summary 1976 and all that.");
 		TeamService ts = new TeamService();
@@ -63,7 +73,7 @@ public class Program
 		ContestService cs = new ContestService();
 		cs.insert(c1);
 		cs.print_service();
-		
+		*/
 		/*try {
 			Server serv = new Server(9119);
 			Thread t1 = new Thread(serv);
