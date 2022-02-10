@@ -2,8 +2,10 @@ package com.competition.service;
 
 import java.util.HashMap;
 
+import com.competition.dm.IDataModel;
+
 // Interface for things that require a Service.
-public interface ICustomService<ID, OBJ>
+public interface ICustomService<ID, OBJ extends IDataModel>
 {
 	HashMap<ID, OBJ> get_objects(); // Whoever needs gets the FIXED DB.
 	void print_service(); // Print DB

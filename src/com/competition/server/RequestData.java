@@ -49,6 +49,6 @@ public class RequestData
 	
 	public String toString()
 	{
-		return "{ action: "+action+",\ntype: "+objType+"\ndata: " + String.join(" ; ",data)+" }";
+		return "{ action: "+action+",\ntype: "+objType+"\ndata: " + String.join(" ; ", data) +" }";
 	}
 }

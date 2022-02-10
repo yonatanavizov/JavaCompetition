@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Match Data Object:
  * This will hold a match that went between two teams, the outcome of the match as well.
  */
-public class Match
+public class Match implements IDataModel
 {
 	public enum OutCome // The outcome of the match to adjust the team's win lose ratio.
 	{
@@ -46,12 +46,12 @@ public class Match
 	{
 		return outcome;
 	}
-	
+	@Override
 	public void set_id(int id)
 	{
 		this.id = id;
 	}
-	
+	@Override
 	public int get_id()
 	{
 		return id;
@@ -76,7 +76,7 @@ public class Match
 	{
 		this.b = new Team(b);
 	}
-	
+	@Override
 	public String toString()
 	{ 
 		return "Match [ ID: "+id+" | outcome: "+ outcome+ " | Team A: "+ a.get_name() + " .VS. "+" Team B: "+b.get_name()+"]"; 

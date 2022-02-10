@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Team Data Object:
  * This object holds the team that would be in a competition.
  */
-public class Team 
+public class Team implements IDataModel
 {
 	public enum Rank // The rank is delegating the teams to different tiers.
 	{
@@ -87,10 +87,12 @@ public class Team
 	{
 		return this.summary;
 	}
+	@Override
 	public int get_id()
 	{
 		return this.tid;
 	}
+	@Override
 	public String toString()
 	{
 		String str = "id: " + tid + " [name: " + name + ", game_type: " + game_type + 
@@ -127,6 +129,7 @@ public class Team
 	{
 		this.summary = summary;
 	}
+	@Override
 	public void set_id(int tid)
 	{
 		this.tid = tid;

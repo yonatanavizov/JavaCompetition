@@ -9,6 +9,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+
+import com.competition.dm.Team;
+import com.competition.dm.Team.Rank;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -151,4 +154,30 @@ public class UtilityClass
 			return gson.fromJson(contents, type);
 		}
 	}
+	
+	public static class ServerUtil
+	{
+		public static Team convertToTeam(String[] data)
+		{
+			int tid = Integer.parseInt(data[0]);
+			int members = Integer.parseInt(data[1]);
+			int position = Integer.parseInt(data[2]);
+			int rank = Integer.parseInt(data[3]);
+			float win_loss_ratio = Float.parseFloat(data[4]);
+			String game_type = data[5];
+			String name = data[6];
+			String summary = data[7];
+			Team team = new Team(tid,name,game_type,Team.Rank.values()[rank],members,position,win_loss_ratio,summary);
+			return team;
+		}
+		public static Team convertToMatch(String[] data)
+		{
+			return null;
+		}
+		public static Team convertToContest(String[] data)
+		{
+			return null;
+		}
+	}
+
 }

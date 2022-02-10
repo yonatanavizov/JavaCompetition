@@ -8,7 +8,7 @@ import java.util.HashMap;
  * Holds a Minor Database of the Contest itself, having a STRING for the level of the contest (Semi Final, Finals, Prelim..)
  * 
  */
-public class Contest
+public class Contest implements IDataModel
 {
 	String name;
 	int id;
@@ -33,6 +33,7 @@ public class Contest
 		this.id=id;
 		this.matches = new HashMap<String, ArrayList<Match>>();
 	}
+	@Override
 	public int get_id()
 	{
 		return id;
@@ -45,6 +46,7 @@ public class Contest
 	{
 		this.name=name;
 	}
+	@Override
 	public void set_id(int id)
 	{
 		this.id=id;
@@ -66,6 +68,7 @@ public class Contest
 	{
 		this.matches.get(level).remove(mat);
 	}
+	@Override
 	public String toString() // Needs to print the whole matches.
 	{
 		String s = "[ Contest id: " + this.id + " name: " + this.name + " Amount: " + matches.size() + " ]";

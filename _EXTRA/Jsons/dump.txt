@@ -1,0 +1,14 @@
+{
+    "action":"add",
+    "objType": "Team",
+    "data": {
+        "tid":0,
+        "members":1,
+        "postion":11,
+        "rank":"ADVANCED",
+        "win_loss_ratio":0.11,
+        "game_type":"basket ball",
+        "name":"first team",
+        "summary":"A lot of summary for the year 1976 and all that ."
+    }
+}
