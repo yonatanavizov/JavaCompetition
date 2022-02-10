@@ -80,5 +80,11 @@ public class Match implements IDataModel
 	public String toString()
 	{ 
 		return "Match [ ID: "+id+" | outcome: "+ outcome+ " | Team A: "+ a.get_name() + " .VS. "+" Team B: "+b.get_name()+"]"; 
+	}
+
+	@Override
+	public ModelType get_type()
+	{
+		return ModelType.Match;
 	}	
 }

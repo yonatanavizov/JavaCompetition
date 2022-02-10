@@ -74,4 +74,10 @@ public class Contest implements IDataModel
 		String s = "[ Contest id: " + this.id + " name: " + this.name + " Amount: " + matches.size() + " ]";
 		return s;
 	}
+
+	@Override
+	public ModelType get_type()
+	{
+		return ModelType.Contest;
+	}
 }

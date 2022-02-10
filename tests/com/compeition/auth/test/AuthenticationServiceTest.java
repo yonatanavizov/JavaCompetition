@@ -1,12 +1,7 @@
 package com.compeition.auth.test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import com.competition.auth.AuthenticationService;
-
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

@@ -1,16 +1,22 @@
 package com.competition.server;
 
+import com.competition.dm.Contest;
+import com.competition.dm.IDataModel;
+import com.competition.dm.Match;
+import com.competition.dm.Team;
+
 public class RequestData
 {
 	private String action;
 	private String objType;
-	private String[] data;
+	private int amountOfObjects;
+	private IDataModel[] data;
 	
-	public RequestData(String action, String objType, String[] data)
+	public RequestData(String action, String objType, int amountOfObjects)
 	{
 		this.action = action;
 		this.objType = objType;
-		this.data = data;
+		this.amountOfObjects = amountOfObjects;
 	}
 	
 	public String get_action()
@@ -23,7 +29,7 @@ public class RequestData
 		return objType;
 	}
 	
-	public String[] get_data()
+	public IDataModel[] get_data()
 	{
 		return data;
 	}
@@ -38,17 +44,36 @@ public class RequestData
 		this.objType = objType;
 	}
 	
-	public void set_data(String[] data)
+	public void set_data(Team[] data)
 	{
-		this.data = new String[data.length];
-		for(int i = 0; i < data.length; i++)
+		this.data = new Team[amountOfObjects];
+		System.out.println("(made == got) " + this.data.length + " == " + data.length);
+		for(int i = 0; i < amountOfObjects; i++)
 		{
-			this.data[i] = data[i];
+			this.data[i] = new Team(data[i]);
+		}
+	}
+	
+	public void set_data(Match[] data)
+	{
+		this.data = new Match[amountOfObjects];
+		for(int i = 0; i < this.data.length; i++)
+		{
+			this.data[i] = new Match(data[i]);
+		}
+	}
+	
+	public void set_data(Contest[] data)
+	{
+		this.data = new Contest[amountOfObjects];
+		for(int i = 0; i < this.data.length; i++)
+		{
+			this.data[i] = new Contest(data[i]);
 		}
 	}
 	
 	public String toString()
 	{
-		return "{ action: "+action+",\ntype: "+objType+"\ndata: " + String.join(" ; ", data) +" }";
+		return "{ action: "+action+",\ntype: "+objType+"\ndata: " + data.length + " data[0]: " + data[0].toString();//String.join(" ; ", data) +" }";
 	}
 }

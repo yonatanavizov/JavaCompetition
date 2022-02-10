@@ -59,6 +59,19 @@ public class Team implements IDataModel
 		this.summary = other.get_summary();
 	}
 	
+	public Team(IDataModel iDataModel) {
+		if(iDataModel.get_type() != ModelType.Team) return;
+		Team other = (Team) iDataModel;
+		this.tid = other.get_id();
+		this.name =other.get_name();
+		this.game_type=other.get_game_type();
+		this.rank=other.get_rank();
+		this.members=other.get_members();
+		this.postion=other.get_position();
+		this.win_loss_ratio=other.get_win_loss();
+		this.summary = other.get_summary();
+	}
+
 	public String get_name()
 	{
 		return this.name;
@@ -134,4 +147,10 @@ public class Team implements IDataModel
 	{
 		this.tid = tid;
 	}
+	
+	@Override
+	public ModelType get_type()
+	{
+		return ModelType.Team;
+	}	
 }

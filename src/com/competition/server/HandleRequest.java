@@ -7,14 +7,17 @@ import java.lang.reflect.Type;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
-import com.competition.dm.IDataModel;
+import com.competition.dm.Contest;
+import com.competition.dm.Match;
 import com.competition.dm.Team;
-import com.competition.service.ContestService;
-import com.competition.service.ICustomService;
-import com.competition.service.MatchService;
-import com.competition.service.TeamService;
 import com.competition.utility.UtilityClass;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 
@@ -53,32 +56,74 @@ public class HandleRequest implements Runnable
 			//Read the Request
 			System.out.println(">> Request port: " + socket.getPort());
 			String request = readBytesRequest();
-			Type type = new TypeToken<RequestData>(){}.getType();
-			Gson gson = new Gson();
-			RequestData re = gson.fromJson(request, type);
 			
-			if(re.get_action() == "get")
+			JsonDeserializer<RequestData> deserializer = new JsonDeserializer<RequestData>() {  
+			    @Override
+			    public RequestData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
+			    {
+			        JsonObject jsonObject = json.getAsJsonObject();
+			        
+			        String action = jsonObject.get("action").getAsString();
+			        String objType = jsonObject.get("objType").getAsString();
+			        int amountOfObjects = jsonObject.get("amountOfObjects").getAsInt();
+			        
+			        RequestData re = new RequestData(action, objType, amountOfObjects);
+			        Type type;
+			        Gson gson = new Gson();
+			        
+			        switch(objType)
+			        {
+				        case "Team":
+				        	Team[] teams = new Team[amountOfObjects];
+				        	type = new TypeToken<Team[]>(){}.getType();
+				        	teams = gson.fromJson(jsonObject.get("data"), type);
+				        	
+				        	re.set_data(teams);
+				        	break;
+				        case "Match":
+				        	Match[] matches = new Match[amountOfObjects];
+				        	type = new TypeToken<Team[]>(){}.getType();
+				        	matches = gson.fromJson(jsonObject.get("data"), type);
+				        	
+				        	re.set_data(matches);
+				        	break;
+				        case "Contest":
+				        	Contest[] contests = new Contest[amountOfObjects];
+				        	type = new TypeToken<Team[]>(){}.getType();
+				        	contests = gson.fromJson(jsonObject.get("data"), type);
+				        	
+				        	re.set_data(contests);
+				        	break;
+			        	default:
+			        		throw new JsonParseException("Wrong type of object");
+			        }			        
+			        
+			        return re;
+			    }
+			};
+			
+			
+			GsonBuilder gsonBuilder = new GsonBuilder();
+
+			
+			gsonBuilder.registerTypeAdapter(RequestData.class, deserializer);
+
+			Gson customGson = gsonBuilder.create();  
+			RequestData requester = customGson.fromJson(request, RequestData.class);  
+			
+			System.out.println(requester.toString());
+			//UtilityClass.ServerUtil.Add(requester.get_data());
+			
+			if(requester.get_action().equals("add"))//s1.equals(s2)
 			{
-				//send data to the client
+				System.out.println("I am in ADD for Something");
+				UtilityClass.ServerUtil.Add(requester.get_data());
 			}
-			else
+			else if(requester.get_action().equals("remove"))
 			{
-				//Parse the Data Model
-				IDataModel model = data_conversion(re.get_objType(), re.get_data());
-				
-				//Do the given action
-				//do_action(re.get_action(), model);
-				switch(re.get_objType())
-				{
-					case "Team":
-					{
-						do_action(re.get_action(), model, re.get_objType());
-						break;
-					}
-				}
+				System.out.println("I am in DELETE for Something");
+				UtilityClass.ServerUtil.Delete(requester.get_data());
 			}
-			
-			
 			
 			socket.close();
 			System.out.println("<< Request ended");
@@ -88,39 +133,5 @@ public class HandleRequest implements Runnable
 			e.printStackTrace();
 		}
 		
-	}
-	
-	private static <T extends IDataModel> void do_action(String action, T model, String type)
-	{
-		ICustomService<String, T> ser = null;
-		/*
-		 * Basically have this whole function ability in the Utility Class.
-		 * Have 3 functions there, each gets the RequestData and Parses to the Data, does the action, and returns
-		 * true or false if it managed something. 
-		 * The functions will look exactly the same because fuck Generics. 
-		 */
-		if(action == "remove")//delete
-		{
-			ser.delete(model);
-		}
-		else if(action == "add")//add
-		{
-			ser.insert(model);
-		}
-	}
-	
-	private static IDataModel data_conversion(String type, String[] data)
-	{
-		if (data == null) return null;
-		switch(type)
-		{
-			case "Team":
-				return UtilityClass.ServerUtil.convertToTeam(data);
-			case "Match":
-				break;
-			case "Contest":
-				break;
-		}
-		return null;
 	}
 }

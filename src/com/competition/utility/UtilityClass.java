@@ -10,8 +10,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
+import com.competition.dm.IDataModel;
 import com.competition.dm.Team;
-import com.competition.dm.Team.Rank;
+import com.competition.service.TeamService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -157,26 +158,48 @@ public class UtilityClass
 	
 	public static class ServerUtil
 	{
-		public static Team convertToTeam(String[] data)
+		public static <T extends IDataModel> void Add(T[] objects)
 		{
-			int tid = Integer.parseInt(data[0]);
-			int members = Integer.parseInt(data[1]);
-			int position = Integer.parseInt(data[2]);
-			int rank = Integer.parseInt(data[3]);
-			float win_loss_ratio = Float.parseFloat(data[4]);
-			String game_type = data[5];
-			String name = data[6];
-			String summary = data[7];
-			Team team = new Team(tid,name,game_type,Team.Rank.values()[rank],members,position,win_loss_ratio,summary);
-			return team;
+			if(objects == null) return;
+			System.out.println("I am inside ADD for type == " + objects[0].get_type());
+			switch(objects[0].get_type())
+			{
+				case Contest:
+					break;
+				case Match:
+					break;
+				case Team:
+					TeamService ts = new TeamService();
+					for(int i = 0; i < objects.length; i++)
+					{
+						ts.insert((Team) objects[i]);
+					}
+					break;
+				default:
+					break;
+			}
 		}
-		public static Team convertToMatch(String[] data)
+		
+		public static <T extends IDataModel> void Delete(T[] objects)
 		{
-			return null;
-		}
-		public static Team convertToContest(String[] data)
-		{
-			return null;
+			if(objects == null) return;
+			
+			switch(objects[0].get_type())
+			{
+				case Contest:
+					break;
+				case Match:
+					break;
+				case Team:
+					TeamService ts = new TeamService();
+					for(int i = 0; i < objects.length; i++)
+					{
+						ts.delete((Team) objects[i]);
+					}
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
