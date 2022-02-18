@@ -1,7 +1,6 @@
 package com.controller;
 
 import java.util.HashMap;
-import java.util.List;
 
 import com.competition.dm.Contest;
 import com.competition.dm.IDataModel;
@@ -81,19 +80,40 @@ public class Controller
 		}
 	}
 	
-	public List<IDataModel> get_db(String objType)
+	public IDataModel[] get_db(String objType) throws Exception
 	{
-		//return cs.get_objects();
-		// ask what type we are -- construct a list from hashmap, return it.
+		IDataModel[] send = null;
 		
-		//assume we are Team
-		//HashMap<String, IDataModel> db = null;
-		List<IDataModel> send = null;
-		if(objType.equals("Team"))
+		switch(objType)
 		{
-			HashMap<String, Team> db = ts.get_objects();
-			send.add(db.get("1"));
+			case "Team":
+				HashMap<String, Team> tdb = ts.get_objects();
+				send = new Team[tdb.size()];
+				for(int i= 0; i < send.length; i++)
+				{
+					send[i] = tdb.get(String.valueOf(i));
+				}
+				break;
+			case "Match":
+				HashMap<String, Match> mdb = ms.get_objects();
+				send = new Match[mdb.size()];
+				for(int i= 0; i < send.length; i++)
+				{
+					send[i] = mdb.get(String.valueOf(i));
+				}
+				break;
+			case "Contest":
+				HashMap<String, Contest> cdb = cs.get_objects();
+				send = new Contest[cdb.size()];
+				for(int i= 0; i < send.length; i++)
+				{
+					send[i] = cdb.get(String.valueOf(i));
+				}
+				break;
+			default:
+				throw new Exception("Wrong object type given for Controller");
 		}
+		
 		return send;
 	}
 }

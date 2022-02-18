@@ -12,9 +12,8 @@
 
 package com.competition.src;
 
-import java.io.IOException;
-
-import com.competition.server.Server;
+import com.competition.dm.IDataModel;
+import com.controller.Controller;
 
 
 // The starting point of the application
@@ -23,7 +22,7 @@ public class Program
 {
 	public static void main(String[] args)
 	{
-		try {
+		/*try {
 			Server serv = new Server(4545);
 			Thread t1 = new Thread(serv);
 			
@@ -32,7 +31,22 @@ public class Program
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+*/
+		Controller con = new Controller();
+		IDataModel[] db;
+		try {
+			db = con.get_db("Match");
+			for(int i = 0; i < db.length;i++)
+			{
+				System.out.println(db[i].toString());
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 		System.out.println("end");
 	}
 }

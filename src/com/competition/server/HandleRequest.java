@@ -124,12 +124,18 @@ public class HandleRequest implements Runnable
 			else if(requester.get_action().equals("get"))
 			{
 				//need to send back info.
-				List<IDataModel> info = controller.get_db(requester.get_objType());
-				
-				if(info.get(0).get_type() == new Team().get_type())
-				{
-					System.out.println("getting");
+				IDataModel[] info = null;
+				try {
+					info = controller.get_db(requester.get_objType());
 				}
+				catch (Exception e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				//Request
+				
 			}
 			
 			socket.close();
