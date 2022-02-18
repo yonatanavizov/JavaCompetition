@@ -28,11 +28,8 @@ public class Server implements Runnable
 			try
 			{
 				someClient = serverSocket.accept();
-				
 				System.out.println("request["+requestId+"] incoming.");
-				
 				new Thread(new HandleRequest(someClient)).start();
-				System.out.println("request["+requestId+"] ended.");
 				requestId++;
 			}
 			catch (IOException e)

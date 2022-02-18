@@ -9,7 +9,7 @@ import com.competition.utility.UtilityClass;
 
 //This class is a Singleton that will hold only 1 instance of the MatchDAO, which lets it handle a single running DB.
 
-public class MatchService implements ICustomService<String, Match>
+public class MatchService implements ICustomService<Match>
 {
 	private MatchDAO dao;
 	

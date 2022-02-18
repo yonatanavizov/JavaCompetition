@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 import com.competition.dm.Contest;
 import com.competition.dm.Match;
 import com.competition.dm.Team;
-import com.competition.utility.UtilityClass;
+import com.controller.Controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -82,14 +82,14 @@ public class HandleRequest implements Runnable
 				        	break;
 				        case "Match":
 				        	Match[] matches = new Match[amountOfObjects];
-				        	type = new TypeToken<Team[]>(){}.getType();
+				        	type = new TypeToken<Match[]>(){}.getType();
 				        	matches = gson.fromJson(jsonObject.get("data"), type);
 				        	
 				        	re.set_data(matches);
 				        	break;
 				        case "Contest":
 				        	Contest[] contests = new Contest[amountOfObjects];
-				        	type = new TypeToken<Team[]>(){}.getType();
+				        	type = new TypeToken<Contest[]>(){}.getType();
 				        	contests = gson.fromJson(jsonObject.get("data"), type);
 				        	
 				        	re.set_data(contests);
@@ -104,25 +104,24 @@ public class HandleRequest implements Runnable
 			
 			
 			GsonBuilder gsonBuilder = new GsonBuilder();
-
-			
 			gsonBuilder.registerTypeAdapter(RequestData.class, deserializer);
-
 			Gson customGson = gsonBuilder.create();  
 			RequestData requester = customGson.fromJson(request, RequestData.class);  
+						
+			//System.out.println(requester.toString());
+			Controller controller = new Controller();
 			
-			System.out.println(requester.toString());
-			//UtilityClass.ServerUtil.Add(requester.get_data());
-			
-			if(requester.get_action().equals("add"))//s1.equals(s2)
+			if(requester.get_action().equals("add"))
 			{
-				System.out.println("I am in ADD for Something");
-				UtilityClass.ServerUtil.Add(requester.get_data());
+				controller.Add(requester.get_data());
 			}
 			else if(requester.get_action().equals("remove"))
 			{
-				System.out.println("I am in DELETE for Something");
-				UtilityClass.ServerUtil.Delete(requester.get_data());
+				controller.Delete(requester.get_data());
+			}
+			else if(requester.get_action().equals("get"))
+			{
+				//need to send back info.
 			}
 			
 			socket.close();

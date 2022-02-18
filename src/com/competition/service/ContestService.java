@@ -8,7 +8,7 @@ import com.competition.dm.Contest;
 import com.competition.utility.UtilityClass;
 
 //This class is a Singleton that will hold only 1 instance of the ContestDAO, which lets it handle a single running DB.
-public class ContestService implements ICustomService<String, Contest>
+public class ContestService implements ICustomService<Contest>
 {
 	ContestDAO dao;
 	

@@ -12,7 +12,7 @@ import com.competition.KMPSearchAlgo;
 
 // This class is a Singleton that will hold only 1 instance of the TeamDAO, which lets it handle a single running DB.
 // This class also has StringSearch need, so it has a special Searcher.
-public class TeamService implements ICustomService<String, Team>
+public class TeamService implements ICustomService<Team>
 {
 	ISearchAlgoFamily searcher;
 	private TeamDAO teamDao;

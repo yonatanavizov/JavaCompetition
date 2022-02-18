@@ -10,9 +10,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
-import com.competition.dm.IDataModel;
-import com.competition.dm.Team;
-import com.competition.service.TeamService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -158,48 +155,6 @@ public class UtilityClass
 	
 	public static class ServerUtil
 	{
-		public static <T extends IDataModel> void Add(T[] objects)
-		{
-			if(objects == null) return;
-			System.out.println("I am inside ADD for type == " + objects[0].get_type());
-			switch(objects[0].get_type())
-			{
-				case Contest:
-					break;
-				case Match:
-					break;
-				case Team:
-					TeamService ts = new TeamService();
-					for(int i = 0; i < objects.length; i++)
-					{
-						ts.insert((Team) objects[i]);
-					}
-					break;
-				default:
-					break;
-			}
-		}
-		
-		public static <T extends IDataModel> void Delete(T[] objects)
-		{
-			if(objects == null) return;
-			
-			switch(objects[0].get_type())
-			{
-				case Contest:
-					break;
-				case Match:
-					break;
-				case Team:
-					TeamService ts = new TeamService();
-					for(int i = 0; i < objects.length; i++)
-					{
-						ts.delete((Team) objects[i]);
-					}
-					break;
-				default:
-					break;
-			}
-		}
+
 	}
 }
