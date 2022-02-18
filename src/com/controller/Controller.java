@@ -1,11 +1,13 @@
 package com.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import com.competition.dm.Contest;
 import com.competition.dm.IDataModel;
 import com.competition.dm.Match;
 import com.competition.dm.Team;
 import com.competition.service.ContestService;
-import com.competition.service.ICustomService;
 import com.competition.service.MatchService;
 import com.competition.service.TeamService;
 
@@ -79,17 +81,19 @@ public class Controller
 		}
 	}
 	
-	public <T extends ICustomService<IDataModel>> T get_service(String objType)
+	public List<IDataModel> get_db(String objType)
 	{
-		T returner = null;
+		//return cs.get_objects();
+		// ask what type we are -- construct a list from hashmap, return it.
 		
-		switch(objType)
+		//assume we are Team
+		//HashMap<String, IDataModel> db = null;
+		List<IDataModel> send = null;
+		if(objType.equals("Team"))
 		{
-			case "Team":
-				//returner = (TeamService) returner;
-				//return returner;
-				break;
+			HashMap<String, Team> db = ts.get_objects();
+			send.add(db.get("1"));
 		}
-		return returner;
+		return send;
 	}
 }

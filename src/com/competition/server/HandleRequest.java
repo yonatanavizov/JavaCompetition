@@ -6,8 +6,10 @@ import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import com.competition.dm.Contest;
+import com.competition.dm.IDataModel;
 import com.competition.dm.Match;
 import com.competition.dm.Team;
 import com.controller.Controller;
@@ -122,6 +124,12 @@ public class HandleRequest implements Runnable
 			else if(requester.get_action().equals("get"))
 			{
 				//need to send back info.
+				List<IDataModel> info = controller.get_db(requester.get_objType());
+				
+				if(info.get(0).get_type() == new Team().get_type())
+				{
+					System.out.println("getting");
+				}
 			}
 			
 			socket.close();
