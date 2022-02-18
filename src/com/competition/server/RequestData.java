@@ -72,6 +72,27 @@ public class RequestData
 		}
 	}
 	
+	public void set_data(IDataModel[] datar)
+	{
+		switch(data[0].get_type())
+		{
+		case Contest:
+			Contest[] c = (Contest[]) datar;
+			set_data(c);
+			break;
+		case Match:
+			Match[] m = (Match[]) datar;
+			set_data(m);
+			break;
+		case Team:
+			Team[] t = (Team[]) datar;
+			set_data(t);
+			break;
+			default:
+				break;
+		}
+	}
+	
 	public String toString()
 	{
 		return "{ action: "+action+",\ntype: "+objType+"\ndata: " + data.length + " data[0]: " + data[0].toString();//String.join(" ; ", data) +" }";

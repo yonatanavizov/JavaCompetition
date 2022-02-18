@@ -134,7 +134,8 @@ public class HandleRequest implements Runnable
 					e.printStackTrace();
 				}
 				
-				//Request
+				RequestData response = new RequestData(requester.get_action(), requester.get_objType(), info.length);
+				response.set_data(info);
 				
 			}
 			
