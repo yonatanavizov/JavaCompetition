@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 
 import com.competition.dm.Contest;
 import com.competition.dm.IDataModel;
@@ -15,11 +14,14 @@ import com.competition.dm.Team;
 import com.controller.Controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
 
@@ -137,6 +139,33 @@ public class HandleRequest implements Runnable
 				RequestData response = new RequestData(requester.get_action(), requester.get_objType(), info.length);
 				response.set_data(info);
 				
+				JsonSerializer<RequestData> serializer = new JsonSerializer<RequestData>() {  
+				    @Override
+				    public JsonElement serialize(RequestData src, Type typeOfSrc, JsonSerializationContext context) {
+				        JsonObject req = new JsonObject();
+
+				        req.addProperty("action", src.get_action());
+				        req.addProperty("objType", src.get_objType());
+				        req.addProperty("amountOfObjects", src.get_data().length);
+				        //jsonMerchant.add("data", src.get_data());
+				        JsonArray dataArr = new JsonArray();
+				        for(int i = 0; i < response.get_data().length; i++)
+				        {
+				        	//dataArr.add(response.get_data()[i]);
+				        }
+
+				        return req;
+				    }
+				};
+				
+				GsonBuilder gsonRes = new GsonBuilder();
+
+				
+				gsonBuilder.registerTypeAdapter(RequestData.class, serializer);
+
+				Gson gsonRep = gsonRes.create();  
+				String customJSON = gsonRep.toJson(response);
+				System.out.println(customJSON); // to return
 			}
 			
 			socket.close();
