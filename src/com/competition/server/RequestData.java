@@ -47,7 +47,6 @@ public class RequestData
 	public void set_data(Team[] data)
 	{
 		this.data = new Team[amountOfObjects];
-		System.out.println("(made == got) " + this.data.length + " == " + data.length);
 		for(int i = 0; i < amountOfObjects; i++)
 		{
 			this.data[i] = new Team(data[i]);

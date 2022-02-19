@@ -1,8 +1,10 @@
 package com.competition.server;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -45,13 +47,26 @@ public class HandleRequest implements Runnable
 		  buffer.write(data, 0, nRead);
 		}
 		String contents = new String(buffer.toByteArray(), StandardCharsets.UTF_8);
-		System.out.println(contents);
 		
 		in.close();
 		
 		return contents;
 	}
 	
+	private void returnAnswerToClient(String toReturn) throws IOException
+	{
+		OutputStream output = socket.getOutputStream();
+        DataOutputStream writer = new DataOutputStream(output);
+		writer.writeUTF(toReturn);
+		output.close();
+	}
+	private void CloseConnection() throws IOException
+	{
+		
+		System.out.println("[SERVER] Closing Connection");
+		//socket.close();
+		System.out.println("<< Request ended FAKE CLOSE");
+	}
 	@Override
 	public void run()
 	{
@@ -171,11 +186,11 @@ public class HandleRequest implements Runnable
 
 				Gson gsonRep = gsonRes.create();  
 				String customJSON = gsonRep.toJson(response);
-				System.out.println(customJSON); // to return
+				returnAnswerToClient(customJSON);
 			}
 			
-			socket.close();
-			System.out.println("<< Request ended");
+			CloseConnection();
+			
 		}
 		catch (IOException e)
 		{
