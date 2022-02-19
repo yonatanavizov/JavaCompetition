@@ -74,7 +74,11 @@ public class RequestData
 	
 	public void set_data(IDataModel[] datar)
 	{
-		switch(data[0].get_type())
+		if(datar == null) {
+			System.out.println(">> No data given in set_data, exiting...");
+			return;
+		}
+		switch(datar[0].get_type())
 		{
 		case Contest:
 			Contest[] c = (Contest[]) datar;

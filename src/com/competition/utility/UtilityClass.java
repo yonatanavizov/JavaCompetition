@@ -10,8 +10,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
+import com.competition.server.RequestData;
 import com.google.gson.Gson;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 //Holds a lot of Static Classes that will come in handy for the project itself.
 public class UtilityClass
@@ -153,8 +160,21 @@ public class UtilityClass
 		}
 	}
 	
-	public static class ServerUtil
+	public class RequestDataJson implements JsonDeserializer<RequestData>, JsonSerializer<RequestData>
 	{
+	
 
+		@Override
+		public JsonElement serialize(RequestData src, Type type, JsonSerializationContext context) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public RequestData deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2)
+				throws JsonParseException {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 }

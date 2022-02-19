@@ -61,6 +61,7 @@ public class HandleRequest implements Runnable
 			System.out.println(">> Request port: " + socket.getPort());
 			String request = readBytesRequest();
 			
+			
 			JsonDeserializer<RequestData> deserializer = new JsonDeserializer<RequestData>() {  
 			    @Override
 			    public RequestData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
@@ -147,12 +148,17 @@ public class HandleRequest implements Runnable
 				        req.addProperty("action", src.get_action());
 				        req.addProperty("objType", src.get_objType());
 				        req.addProperty("amountOfObjects", src.get_data().length);
-				        //jsonMerchant.add("data", src.get_data());
 				        JsonArray dataArr = new JsonArray();
-				        for(int i = 0; i < response.get_data().length; i++)
+				        
+				        IDataModel[] data = src.get_data();
+				        if (data != null)
 				        {
-				        	//dataArr.add(response.get_data()[i]);
+				        	for(int i = 0; i < data.length; i++)
+				        	{
+				        		dataArr.add(context.serialize(data[i]));
+				        	}
 				        }
+				        req.add("data", dataArr);
 
 				        return req;
 				    }
