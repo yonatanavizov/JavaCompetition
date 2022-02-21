@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.net.Socket;
+import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 
 import com.competition.dm.Contest;
@@ -47,7 +48,7 @@ public class HandleRequest implements Runnable
 		  buffer.write(data, 0, nRead);
 		}
 		String contents = new String(buffer.toByteArray(), StandardCharsets.UTF_8);
-		
+		buffer.flush();
 		in.close();
 		
 		return contents;
@@ -55,20 +56,45 @@ public class HandleRequest implements Runnable
 	
 	private void returnAnswerToClient(String toReturn) throws IOException
 	{
-		OutputStream output = socket.getOutputStream();
-        DataOutputStream writer = new DataOutputStream(output);
-		writer.writeUTF(toReturn);
+		if(CheckConnection()) return; // true == closed socket.
+		DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+		output.writeUTF(toReturn);
+		output.flush();
 		output.close();
+	}
+	@SuppressWarnings("finally")
+	private boolean CheckConnection() throws IOException
+	{
+		boolean closed = false;
+		try {
+			if(socket.getInputStream().read() == -1)//ACK send
+			{
+				System.out.println("Client disconnected before recieved answer");
+				closed = true;
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			CloseConnection();
+			closed = true;
+		}
+		finally
+		{
+			return closed;
+		}
 	}
 	private void CloseConnection() throws IOException
 	{
-		
 		System.out.println("[SERVER] Closing Connection");
-		//socket.close();
-		System.out.println("<< Request ended FAKE CLOSE");
+		socket.close();
 	}
 	@Override
 	public void run()
+	{
+		ParseRequest();
+	}
+	
+	private void ParseRequest()
 	{
 		try
 		{
@@ -82,11 +108,9 @@ public class HandleRequest implements Runnable
 			    public RequestData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
 			    {
 			        JsonObject jsonObject = json.getAsJsonObject();
-			        
 			        String action = jsonObject.get("action").getAsString();
 			        String objType = jsonObject.get("objType").getAsString();
 			        int amountOfObjects = jsonObject.get("amountOfObjects").getAsInt();
-			        
 			        RequestData re = new RequestData(action, objType, amountOfObjects);
 			        Type type;
 			        Gson gson = new Gson();
@@ -127,8 +151,8 @@ public class HandleRequest implements Runnable
 			gsonBuilder.registerTypeAdapter(RequestData.class, deserializer);
 			Gson customGson = gsonBuilder.create();  
 			RequestData requester = customGson.fromJson(request, RequestData.class);  
-						
-			//System.out.println(requester.toString());
+			
+		
 			Controller controller = new Controller();
 			
 			if(requester.get_action().equals("add"))
@@ -142,6 +166,7 @@ public class HandleRequest implements Runnable
 			else if(requester.get_action().equals("get"))
 			{
 				//need to send back info.
+				if(CheckConnection()) return;
 				IDataModel[] info = null;
 				try {
 					info = controller.get_db(requester.get_objType());
@@ -196,6 +221,5 @@ public class HandleRequest implements Runnable
 		{
 			e.printStackTrace();
 		}
-		
 	}
 }
