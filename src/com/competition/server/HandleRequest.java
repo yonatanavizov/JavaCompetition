@@ -31,16 +31,15 @@ import com.google.gson.reflect.TypeToken;
 public class HandleRequest implements Runnable
 {
 	Socket socket;
+	
 	public HandleRequest(Socket socket)
 	{
 		this.socket = socket;
 	}
-
 	
-	private String readBytesRequest() throws IOException
+	private String readBytesRequest(InputStream in, ByteArrayOutputStream buffer) throws IOException
 	{		
-		InputStream in = socket.getInputStream(); // stream of bytes to read
-		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
 		int nRead;
 		byte[] data = new byte[16384];
 		while ((nRead = in.read(data, 0, data.length)) != -1)
@@ -49,22 +48,18 @@ public class HandleRequest implements Runnable
 		}
 		String contents = new String(buffer.toByteArray(), StandardCharsets.UTF_8);
 		buffer.flush();
-		in.close();
 		
 		return contents;
 	}
 	
-	private void returnAnswerToClient(Controller controller, RequestData oldRequest) throws IOException
+	private void returnAnswerToClient(DataOutputStream output, Controller controller, RequestData oldRequest) throws IOException
 	{
-		//need to send back info.
-		if(CheckConnection()) return;
 		IDataModel[] info = null;
 		try {
 			info = controller.get_db(oldRequest.get_objType());
 		}
 		catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -95,21 +90,16 @@ public class HandleRequest implements Runnable
 		    }
 		};
 		
-		GsonBuilder gsonRes = new GsonBuilder();
+		GsonBuilder gson = new GsonBuilder();
+		gson.registerTypeAdapter(RequestData.class, serializer);
 
-		
-		GsonBuilder gsonBuilder = null;
-		gsonBuilder.registerTypeAdapter(RequestData.class, serializer);
-
-		Gson gsonRep = gsonRes.create();  
-		String customJSON = gsonRep.toJson(response);
-		
-		if(CheckConnection()) return; // true == closed socket.
-		DataOutputStream output = new DataOutputStream(socket.getOutputStream());
-		output.writeUTF(customJSON);
+		Gson gsonRep = gson.create();  
+		String answer = gsonRep.toJson(response);
+				
+		output.writeUTF(answer);
 		output.flush();
-		output.close();
 	}
+	
 	@SuppressWarnings("finally")
 	private boolean CheckConnection() throws IOException
 	{
@@ -131,56 +121,19 @@ public class HandleRequest implements Runnable
 			return closed;
 		}
 	}
-	private void CloseConnection() throws IOException
+	
+	private void CloseConnection()
 	{
 		System.out.println("[SERVER] Closing Connection");
-		socket.close();
-	}
-	@Override
-	public void run()
-	{		
-		String str ="";
-		while(!str.equals("stop"))
-		{
-			RequestData re;
-			try {
-				str = readBytesRequest();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				break;
-			}
-			re = ParseRequest(str);
-			boolean ans = ParseToController(re);
-			
-			if(ans)
-			{
-				// wait for confirm
-			}
-			
-			try {
-				if(CheckConnection())
-				{
-					break;
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				break;
-			}
-			
-		}
-		
 		try {
-			CloseConnection();
+			socket.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
-	private boolean ParseToController(RequestData requester)
+	private boolean ParseToController(DataOutputStream output, RequestData requester)
 	{
 		Controller controller = new Controller();
 		boolean ans = false;
@@ -195,7 +148,7 @@ public class HandleRequest implements Runnable
 		else if(requester.get_action().equals("get"))
 		{
 			try {
-				returnAnswerToClient(controller,requester);
+				returnAnswerToClient(output, controller,requester);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -256,7 +209,53 @@ public class HandleRequest implements Runnable
 		gsonBuilder.registerTypeAdapter(RequestData.class, deserializer);
 		Gson customGson = gsonBuilder.create();  
 		RequestData requester = customGson.fromJson(request, RequestData.class);  
-		
+		System.out.println(">> Parsed request");
 		return requester;
 	}
+	
+
+	@Override
+	public void run()
+	{		
+		InputStream in;
+		DataOutputStream output;
+		try
+		{
+			in = socket.getInputStream();
+			output = new DataOutputStream(socket.getOutputStream());
+			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+			
+			String str ="";
+			
+			while(!str.equals("stop"))
+			{
+				RequestData re;
+	
+				str = readBytesRequest(in, buffer);
+				re = ParseRequest(str);
+				boolean ans = ParseToController(output, re);
+				
+				if(ans)
+				{
+					// wait for confirm
+					System.out.println("[SERVER] sending back info");
+				}
+				
+				if(CheckConnection()) break;
+				output.flush();
+			}
+			
+			in.close();
+			output.close();
+		}
+		catch (IOException e1)
+		{
+			e1.printStackTrace();
+		} 
+		
+
+		CloseConnection();
+	}
+	
+
 }
