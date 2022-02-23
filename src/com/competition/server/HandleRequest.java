@@ -54,11 +54,59 @@ public class HandleRequest implements Runnable
 		return contents;
 	}
 	
-	private void returnAnswerToClient(String toReturn) throws IOException
+	private void returnAnswerToClient(Controller controller, RequestData oldRequest) throws IOException
 	{
+		//need to send back info.
+		if(CheckConnection()) return;
+		IDataModel[] info = null;
+		try {
+			info = controller.get_db(oldRequest.get_objType());
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		RequestData response = new RequestData(oldRequest.get_action(), oldRequest.get_objType(), info.length);
+		response.set_data(info);
+		
+		JsonSerializer<RequestData> serializer = new JsonSerializer<RequestData>() {  
+		    @Override
+		    public JsonElement serialize(RequestData src, Type typeOfSrc, JsonSerializationContext context) {
+		        JsonObject req = new JsonObject();
+
+		        req.addProperty("action", src.get_action());
+		        req.addProperty("objType", src.get_objType());
+		        req.addProperty("amountOfObjects", src.get_data().length);
+		        JsonArray dataArr = new JsonArray();
+		        
+		        IDataModel[] data = src.get_data();
+		        if (data != null)
+		        {
+		        	for(int i = 0; i < data.length; i++)
+		        	{
+		        		dataArr.add(context.serialize(data[i]));
+		        	}
+		        }
+		        req.add("data", dataArr);
+
+		        return req;
+		    }
+		};
+		
+		GsonBuilder gsonRes = new GsonBuilder();
+
+		
+		GsonBuilder gsonBuilder = null;
+		gsonBuilder.registerTypeAdapter(RequestData.class, serializer);
+
+		Gson gsonRep = gsonRes.create();  
+		String customJSON = gsonRep.toJson(response);
+		
 		if(CheckConnection()) return; // true == closed socket.
 		DataOutputStream output = new DataOutputStream(socket.getOutputStream());
-		output.writeUTF(toReturn);
+		output.writeUTF(customJSON);
 		output.flush();
 		output.close();
 	}
@@ -90,136 +138,125 @@ public class HandleRequest implements Runnable
 	}
 	@Override
 	public void run()
-	{
-		ParseRequest();
-	}
-	
-	private void ParseRequest()
-	{
-		try
+	{		
+		String str ="";
+		while(!str.equals("stop"))
 		{
-			//Read the Request
-			System.out.println(">> Request port: " + socket.getPort());
-			String request = readBytesRequest();
-			
-			
-			JsonDeserializer<RequestData> deserializer = new JsonDeserializer<RequestData>() {  
-			    @Override
-			    public RequestData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
-			    {
-			        JsonObject jsonObject = json.getAsJsonObject();
-			        String action = jsonObject.get("action").getAsString();
-			        String objType = jsonObject.get("objType").getAsString();
-			        int amountOfObjects = jsonObject.get("amountOfObjects").getAsInt();
-			        RequestData re = new RequestData(action, objType, amountOfObjects);
-			        Type type;
-			        Gson gson = new Gson();
-			        
-			        switch(objType)
-			        {
-				        case "Team":
-				        	Team[] teams = new Team[amountOfObjects];
-				        	type = new TypeToken<Team[]>(){}.getType();
-				        	teams = gson.fromJson(jsonObject.get("data"), type);
-				        	
-				        	re.set_data(teams);
-				        	break;
-				        case "Match":
-				        	Match[] matches = new Match[amountOfObjects];
-				        	type = new TypeToken<Match[]>(){}.getType();
-				        	matches = gson.fromJson(jsonObject.get("data"), type);
-				        	
-				        	re.set_data(matches);
-				        	break;
-				        case "Contest":
-				        	Contest[] contests = new Contest[amountOfObjects];
-				        	type = new TypeToken<Contest[]>(){}.getType();
-				        	contests = gson.fromJson(jsonObject.get("data"), type);
-				        	
-				        	re.set_data(contests);
-				        	break;
-			        	default:
-			        		throw new JsonParseException("Wrong type of object");
-			        }			        
-			        
-			        return re;
-			    }
-			};
-			
-			
-			GsonBuilder gsonBuilder = new GsonBuilder();
-			gsonBuilder.registerTypeAdapter(RequestData.class, deserializer);
-			Gson customGson = gsonBuilder.create();  
-			RequestData requester = customGson.fromJson(request, RequestData.class);  
-			
-		
-			Controller controller = new Controller();
-			
-			if(requester.get_action().equals("add"))
-			{
-				controller.Add(requester.get_data());
+			RequestData re;
+			try {
+				str = readBytesRequest();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				break;
 			}
-			else if(requester.get_action().equals("remove"))
+			re = ParseRequest(str);
+			boolean ans = ParseToController(re);
+			
+			if(ans)
 			{
-				controller.Delete(requester.get_data());
+				// wait for confirm
 			}
-			else if(requester.get_action().equals("get"))
-			{
-				//need to send back info.
-				if(CheckConnection()) return;
-				IDataModel[] info = null;
-				try {
-					info = controller.get_db(requester.get_objType());
-				}
-				catch (Exception e)
+			
+			try {
+				if(CheckConnection())
 				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					break;
 				}
-				
-				RequestData response = new RequestData(requester.get_action(), requester.get_objType(), info.length);
-				response.set_data(info);
-				
-				JsonSerializer<RequestData> serializer = new JsonSerializer<RequestData>() {  
-				    @Override
-				    public JsonElement serialize(RequestData src, Type typeOfSrc, JsonSerializationContext context) {
-				        JsonObject req = new JsonObject();
-
-				        req.addProperty("action", src.get_action());
-				        req.addProperty("objType", src.get_objType());
-				        req.addProperty("amountOfObjects", src.get_data().length);
-				        JsonArray dataArr = new JsonArray();
-				        
-				        IDataModel[] data = src.get_data();
-				        if (data != null)
-				        {
-				        	for(int i = 0; i < data.length; i++)
-				        	{
-				        		dataArr.add(context.serialize(data[i]));
-				        	}
-				        }
-				        req.add("data", dataArr);
-
-				        return req;
-				    }
-				};
-				
-				GsonBuilder gsonRes = new GsonBuilder();
-
-				
-				gsonBuilder.registerTypeAdapter(RequestData.class, serializer);
-
-				Gson gsonRep = gsonRes.create();  
-				String customJSON = gsonRep.toJson(response);
-				returnAnswerToClient(customJSON);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				break;
 			}
-			
-			CloseConnection();
 			
 		}
-		catch (IOException e)
-		{
+		
+		try {
+			CloseConnection();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	
+	private boolean ParseToController(RequestData requester)
+	{
+		Controller controller = new Controller();
+		boolean ans = false;
+		if(requester.get_action().equals("add"))
+		{
+			controller.Add(requester.get_data());
+		}
+		else if(requester.get_action().equals("remove"))
+		{
+			controller.Delete(requester.get_data());
+		}
+		else if(requester.get_action().equals("get"))
+		{
+			try {
+				returnAnswerToClient(controller,requester);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ans = true;
+		}
+		
+		return ans;
+	}
+	
+	private RequestData ParseRequest(String request)
+	{
+		JsonDeserializer<RequestData> deserializer = new JsonDeserializer<RequestData>() {  
+		    @Override
+		    public RequestData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
+		    {
+		        JsonObject jsonObject = json.getAsJsonObject();
+		        String action = jsonObject.get("action").getAsString();
+		        String objType = jsonObject.get("objType").getAsString();
+		        int amountOfObjects = jsonObject.get("amountOfObjects").getAsInt();
+		        RequestData re = new RequestData(action, objType, amountOfObjects);
+		        Type type;
+		        Gson gson = new Gson();
+		        
+		        switch(objType)
+		        {
+			        case "Team":
+			        	Team[] teams = new Team[amountOfObjects];
+			        	type = new TypeToken<Team[]>(){}.getType();
+			        	teams = gson.fromJson(jsonObject.get("data"), type);
+			        	
+			        	re.set_data(teams);
+			        	break;
+			        case "Match":
+			        	Match[] matches = new Match[amountOfObjects];
+			        	type = new TypeToken<Match[]>(){}.getType();
+			        	matches = gson.fromJson(jsonObject.get("data"), type);
+			        	
+			        	re.set_data(matches);
+			        	break;
+			        case "Contest":
+			        	Contest[] contests = new Contest[amountOfObjects];
+			        	type = new TypeToken<Contest[]>(){}.getType();
+			        	contests = gson.fromJson(jsonObject.get("data"), type);
+			        	
+			        	re.set_data(contests);
+			        	break;
+		        	default:
+		        		throw new JsonParseException("Wrong type of object");
+		        }			        
+		        
+		        return re;
+		    }
+		};
+		
+		
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		gsonBuilder.registerTypeAdapter(RequestData.class, deserializer);
+		Gson customGson = gsonBuilder.create();  
+		RequestData requester = customGson.fromJson(request, RequestData.class);  
+		
+		return requester;
 	}
 }
