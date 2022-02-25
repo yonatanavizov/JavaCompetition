@@ -28,7 +28,6 @@ public class Program
 		try {
 			Server serv = new Server(4545);
 			Thread t1 = new Thread(serv);
-			
 			t1.start();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

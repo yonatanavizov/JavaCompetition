@@ -1,13 +1,16 @@
 package com.competition.server;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.net.Socket;
-import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
 
 import com.competition.dm.Contest;
@@ -27,7 +30,6 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
-
 public class HandleRequest implements Runnable
 {
 	Socket socket;
@@ -37,9 +39,9 @@ public class HandleRequest implements Runnable
 		this.socket = socket;
 	}
 	
-	private String readBytesRequest(InputStream in, ByteArrayOutputStream buffer) throws IOException
-	{		
-
+	private String readBytesRequest(DataInputStream in, ByteArrayOutputStream buffer) throws IOException
+	{	
+		/*
 		int nRead;
 		byte[] data = new byte[16384];
 		while ((nRead = in.read(data, 0, data.length)) != -1)
@@ -48,12 +50,13 @@ public class HandleRequest implements Runnable
 		}
 		String contents = new String(buffer.toByteArray(), StandardCharsets.UTF_8);
 		buffer.flush();
-		
-		return contents;
+		return contents;*/
+		return null;
 	}
 	
 	private void returnAnswerToClient(DataOutputStream output, Controller controller, RequestData oldRequest) throws IOException
 	{
+		System.out.println(">> Going to send answer to client");
 		IDataModel[] info = null;
 		try {
 			info = controller.get_db(oldRequest.get_objType());
@@ -92,12 +95,13 @@ public class HandleRequest implements Runnable
 		
 		GsonBuilder gson = new GsonBuilder();
 		gson.registerTypeAdapter(RequestData.class, serializer);
-
+		
 		Gson gsonRep = gson.create();  
 		String answer = gsonRep.toJson(response);
-				
+		
 		output.writeUTF(answer);
 		output.flush();
+		System.out.println("[SERVER] Sent answer --  \n"+answer);
 	}
 	
 	@SuppressWarnings("finally")
@@ -147,12 +151,12 @@ public class HandleRequest implements Runnable
 		}
 		else if(requester.get_action().equals("get"))
 		{
-			try {
+			/*try {
 				returnAnswerToClient(output, controller,requester);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			ans = true;
 		}
 		
@@ -161,7 +165,9 @@ public class HandleRequest implements Runnable
 	
 	private RequestData ParseRequest(String request)
 	{
-		JsonDeserializer<RequestData> deserializer = new JsonDeserializer<RequestData>() {  
+		
+		JsonDeserializer<RequestData> deserializer = new JsonDeserializer<RequestData>()
+		{  
 		    @Override
 		    public RequestData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException
 		    {
@@ -199,7 +205,7 @@ public class HandleRequest implements Runnable
 		        	default:
 		        		throw new JsonParseException("Wrong type of object");
 		        }			        
-		        
+		        System.out.println("[SERVER] Client Request Parsed -- Action: " + re.get_action());
 		        return re;
 		    }
 		};
@@ -213,40 +219,57 @@ public class HandleRequest implements Runnable
 		return requester;
 	}
 	
-
 	@Override
 	public void run()
 	{		
-		InputStream in;
-		DataOutputStream output;
+		//DataInputStream in;
+		//DataOutputStream output;
 		try
 		{
-			in = socket.getInputStream();
-			output = new DataOutputStream(socket.getOutputStream());
-			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+			//in = new DataInputStream(socket.getInputStream());
+			//output = new DataOutputStream(socket.getOutputStream());
+			//ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 			
+			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			PrintWriter printOutput = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+
 			String str ="";
 			
 			while(!str.equals("stop"))
 			{
-				RequestData re;
-	
-				str = readBytesRequest(in, buffer);
-				re = ParseRequest(str);
-				boolean ans = ParseToController(output, re);
+				//RequestData re;
+				System.out.println(">> Going to read request");
+				//str = readBytesRequest(in, buffer);
+				//str = in.readUTF();
+				String message ="";
+				/*while ((message = input.readLine()) != null) {
+					str+=message;
+				   }*/
+				System.out.println(input.readLine());
+				System.out.println("Got from Client\n"+str);
 				
-				if(ans)
-				{
+				printOutput.write("hello from server");
+				printOutput.flush();
+				//re = ParseRequest(str);
+				//System.out.println(">> After parse");
+				//boolean ans = ParseToController(output, re);
+				//System.out.println(">> Need to return -- " + ans);
+				//if(ans)
+				//{
 					// wait for confirm
-					System.out.println("[SERVER] sending back info");
-				}
+					//System.out.println("[SERVER] sending back info");
+					//output.writeUTF("Hello from server");
+				//}
 				
-				if(CheckConnection()) break;
-				output.flush();
+				
+				
+				//if(CheckConnection()) break;
+				//output.flush();
 			}
-			
-			in.close();
-			output.close();
+			input.close();
+			printOutput.close();
+			//in.close();
+			//output.close();
 		}
 		catch (IOException e1)
 		{
@@ -257,5 +280,4 @@ public class HandleRequest implements Runnable
 		CloseConnection();
 	}
 	
-
 }
