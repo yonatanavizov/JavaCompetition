@@ -160,22 +160,4 @@ public class UtilityClass
 			return gson.fromJson(contents, type);
 		}
 	}
-	
-	public class RequestDataJson implements JsonDeserializer<RequestData>, JsonSerializer<RequestData>
-	{
-	
-
-		@Override
-		public JsonElement serialize(RequestData src, Type type, JsonSerializationContext context) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public RequestData deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2)
-				throws JsonParseException {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	}
 }

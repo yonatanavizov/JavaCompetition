@@ -30,7 +30,7 @@ public class Server implements Runnable
 			{
 				socket = serverSocket.accept();
 				System.out.println("request["+requestId+"] incoming.");
-				new Thread(new FakeHandleRequest(socket)).start();
+				new Thread(new HandleRequest(socket)).start();
 				requestId++;
 			}
 			catch (IOException e)

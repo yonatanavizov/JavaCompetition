@@ -1,17 +1,11 @@
 package com.competition.server;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 
 import com.competition.dm.Contest;
 import com.competition.dm.IDataModel;
@@ -34,133 +28,9 @@ public class HandleRequest implements Runnable
 {
 	Socket socket;
 	
-	public HandleRequest(Socket socket)
+	public HandleRequest(Socket given)
 	{
-		this.socket = socket;
-	}
-	
-	private String readBytesRequest(DataInputStream in, ByteArrayOutputStream buffer) throws IOException
-	{	
-		/*
-		int nRead;
-		byte[] data = new byte[16384];
-		while ((nRead = in.read(data, 0, data.length)) != -1)
-		{
-		  buffer.write(data, 0, nRead);
-		}
-		String contents = new String(buffer.toByteArray(), StandardCharsets.UTF_8);
-		buffer.flush();
-		return contents;*/
-		return null;
-	}
-	
-	private void returnAnswerToClient(DataOutputStream output, Controller controller, RequestData oldRequest) throws IOException
-	{
-		System.out.println(">> Going to send answer to client");
-		IDataModel[] info = null;
-		try {
-			info = controller.get_db(oldRequest.get_objType());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		RequestData response = new RequestData(oldRequest.get_action(), oldRequest.get_objType(), info.length);
-		response.set_data(info);
-		
-		JsonSerializer<RequestData> serializer = new JsonSerializer<RequestData>() {  
-		    @Override
-		    public JsonElement serialize(RequestData src, Type typeOfSrc, JsonSerializationContext context) {
-		        JsonObject req = new JsonObject();
-
-		        req.addProperty("action", src.get_action());
-		        req.addProperty("objType", src.get_objType());
-		        req.addProperty("amountOfObjects", src.get_data().length);
-		        JsonArray dataArr = new JsonArray();
-		        
-		        IDataModel[] data = src.get_data();
-		        if (data != null)
-		        {
-		        	for(int i = 0; i < data.length; i++)
-		        	{
-		        		dataArr.add(context.serialize(data[i]));
-		        	}
-		        }
-		        req.add("data", dataArr);
-
-		        return req;
-		    }
-		};
-		
-		GsonBuilder gson = new GsonBuilder();
-		gson.registerTypeAdapter(RequestData.class, serializer);
-		
-		Gson gsonRep = gson.create();  
-		String answer = gsonRep.toJson(response);
-		
-		output.writeUTF(answer);
-		output.flush();
-		System.out.println("[SERVER] Sent answer --  \n"+answer);
-	}
-	
-	@SuppressWarnings("finally")
-	private boolean CheckConnection() throws IOException
-	{
-		boolean closed = false;
-		try {
-			if(socket.getInputStream().read() == -1)//ACK send
-			{
-				System.out.println("Client disconnected before recieved answer");
-				closed = true;
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			CloseConnection();
-			closed = true;
-		}
-		finally
-		{
-			return closed;
-		}
-	}
-	
-	private void CloseConnection()
-	{
-		System.out.println("[SERVER] Closing Connection");
-		try {
-			socket.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	private boolean ParseToController(DataOutputStream output, RequestData requester)
-	{
-		Controller controller = new Controller();
-		boolean ans = false;
-		if(requester.get_action().equals("add"))
-		{
-			controller.Add(requester.get_data());
-		}
-		else if(requester.get_action().equals("remove"))
-		{
-			controller.Delete(requester.get_data());
-		}
-		else if(requester.get_action().equals("get"))
-		{
-			/*try {
-				returnAnswerToClient(output, controller,requester);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-			ans = true;
-		}
-		
-		return ans;
+		socket = given;
 	}
 	
 	private RequestData ParseRequest(String request)
@@ -219,65 +89,125 @@ public class HandleRequest implements Runnable
 		return requester;
 	}
 	
-	@Override
-	public void run()
-	{		
-		//DataInputStream in;
-		//DataOutputStream output;
-		try
+	private boolean ParseToController(RequestData clientRequest)
+	{
+		Controller controller = new Controller();
+		boolean ans = false;
+		if(clientRequest.get_action().equals("add"))
 		{
-			//in = new DataInputStream(socket.getInputStream());
-			//output = new DataOutputStream(socket.getOutputStream());
-			//ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-			
-			BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			PrintWriter printOutput = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-
-			String str ="";
-			
-			while(!str.equals("stop"))
-			{
-				//RequestData re;
-				System.out.println(">> Going to read request");
-				//str = readBytesRequest(in, buffer);
-				//str = in.readUTF();
-				String message ="";
-				/*while ((message = input.readLine()) != null) {
-					str+=message;
-				   }*/
-				System.out.println(input.readLine());
-				System.out.println("Got from Client\n"+str);
-				
-				printOutput.write("hello from server");
-				printOutput.flush();
-				//re = ParseRequest(str);
-				//System.out.println(">> After parse");
-				//boolean ans = ParseToController(output, re);
-				//System.out.println(">> Need to return -- " + ans);
-				//if(ans)
-				//{
-					// wait for confirm
-					//System.out.println("[SERVER] sending back info");
-					//output.writeUTF("Hello from server");
-				//}
-				
-				
-				
-				//if(CheckConnection()) break;
-				//output.flush();
-			}
-			input.close();
-			printOutput.close();
-			//in.close();
-			//output.close();
+			controller.Add(clientRequest.get_data());
 		}
-		catch (IOException e1)
+		else if(clientRequest.get_action().equals("remove"))
 		{
-			e1.printStackTrace();
-		} 
-		
-
-		CloseConnection();
+			controller.Delete(clientRequest.get_data());
+		}
+		else if(clientRequest.get_action().equals("get"))
+		{
+			ans = true;
+		}
+		return ans;
 	}
 	
+	private String ReturnAnswerToClient(String type) throws IOException
+	{
+		Controller controller = new Controller();
+		System.out.println(">> Going to send answer to client");
+		IDataModel[] info = null;
+		try {
+			info = controller.get_db(type);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		RequestData response = new RequestData("add", type, info.length);
+		response.set_data(info);
+		
+		JsonSerializer<RequestData> serializer = new JsonSerializer<RequestData>() {  
+		    @Override
+		    public JsonElement serialize(RequestData src, Type typeOfSrc, JsonSerializationContext context) {
+		        JsonObject req = new JsonObject();
+
+		        req.addProperty("action", src.get_action());
+		        req.addProperty("objType", src.get_objType());
+		        req.addProperty("amountOfObjects", src.get_data().length);
+		        JsonArray dataArr = new JsonArray();
+		        
+		        IDataModel[] data = src.get_data();
+		        if (data != null)
+		        {
+		        	for(int i = 0; i < data.length; i++)
+		        	{
+		        		dataArr.add(context.serialize(data[i]));
+		        	}
+		        }
+		        req.add("data", dataArr);
+
+		        return req;
+		    }
+		};
+		
+		GsonBuilder gson = new GsonBuilder();
+		gson.registerTypeAdapter(RequestData.class, serializer);
+		
+		Gson gsonRep = gson.create();  
+		String answer = gsonRep.toJson(response);
+		
+		return answer;
+	}
+	
+	@Override
+	public void run()
+	{
+		System.out.println("[SERVER]\nFakeHandleRequest -- Awake");
+		String str = "";
+		
+		while(!str.equals("stop"))
+		{
+			try
+			{
+				System.out.println(">> entered while");
+				BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				PrintWriter output = new PrintWriter(socket.getOutputStream());
+				
+				System.out.println(">> after some while");
+
+				str = input.readLine();
+				System.out.println("<< got from client\n"+str);
+				RequestData clientRequest = ParseRequest(str);
+				boolean shouldSendToClient = ParseToController(clientRequest);
+				
+				String toSendtoClient = "bye";
+				
+				if(shouldSendToClient)
+				{
+					toSendtoClient = ReturnAnswerToClient(clientRequest.get_objType());
+				}
+				
+				System.out.println(">> Going to send to client");
+				output.write(toSendtoClient);
+				output.flush();
+				
+				System.out.println("FakeRequest is closing...");
+				output.close();
+				input.close();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			break;
+		}
+		
+		
+		try
+		{
+			socket.close();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 }
