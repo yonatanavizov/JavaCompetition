@@ -1,7 +1,6 @@
 package com.competition.server;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -32,8 +31,6 @@ public class FakeHandleRequest implements Runnable
 	public FakeHandleRequest(Socket given)
 	{
 		socket = given;
-		//input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		//output = new PrintWriter(socket.getOutputStream());
 	}
 	
 	private RequestData ParseRequest(String request)
@@ -206,28 +203,11 @@ public class FakeHandleRequest implements Runnable
 		
 		try
 		{
-			//output.close();
-			//input.close();
 			socket.close();
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
-	}
-	
-	public static void main(String[] args)
-	{
-		Server serv;
-		try {
-			serv = new Server(4545);
-			Thread t1 = new Thread(serv);
-			t1.start();
-		} catch (IOException e)
-		{
-			System.out.println("server died");
-			e.printStackTrace();
-		}
-		
 	}
 }
