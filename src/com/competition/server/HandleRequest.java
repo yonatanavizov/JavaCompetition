@@ -49,9 +49,12 @@ public class HandleRequest implements Runnable
 		        Type type;
 		        Gson gson = new Gson();
 		        
+		        if(amountOfObjects==0) amountOfObjects = 1;
+		        
 		        switch(objType)
 		        {
 			        case "Team":
+			        	
 			        	Team[] teams = new Team[amountOfObjects];
 			        	type = new TypeToken<Team[]>(){}.getType();
 			        	teams = gson.fromJson(jsonObject.get("data"), type);
@@ -120,9 +123,16 @@ public class HandleRequest implements Runnable
 		{
 			e.printStackTrace();
 		}
+		System.out.println("Returning to Client size " + info.length);
+		for(int i = 0; i < info.length; i++)
+		{
+			System.out.println(info[i]);
+		}
 		
 		RequestData response = new RequestData("add", type, info.length);
-		response.set_data(info);
+		
+		
+		response.set_data(info, type);
 		
 		JsonSerializer<RequestData> serializer = new JsonSerializer<RequestData>() {  
 		    @Override
@@ -150,7 +160,6 @@ public class HandleRequest implements Runnable
 		
 		GsonBuilder gson = new GsonBuilder();
 		gson.registerTypeAdapter(RequestData.class, serializer);
-		
 		Gson gsonRep = gson.create();  
 		String answer = gsonRep.toJson(response);
 		

@@ -2,6 +2,11 @@ package com.competition.server;
 
 import java.io.IOException;
 
+/*
+ * Made by Asaf Dangoor (ID 313307340) - asafdangoor@gmail.com
+ * Made by Yonatan Avizov (ID 318432101) - yonatanavizov1997@gmail.com
+ */
+
 public class Driver
 {
 	
@@ -17,5 +22,6 @@ public class Driver
 		{
 			e.printStackTrace();
 		}
+
 	}
 }

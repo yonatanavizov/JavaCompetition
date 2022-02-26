@@ -17,7 +17,7 @@ public class ContestDAO implements IDAO<String, Contest>
 	
 	public ContestDAO() // Created only by the Service
 	{
-		db = UtilityClass.DaoUtil.Init(UtilityClass.ContestsJsonPath, contestDbType);
+		db = UtilityClass.DaoUtil.InitCon(UtilityClass.ContestsJsonPath, contestDbType);
 	}
 	
 	@Override

@@ -46,6 +46,13 @@ public class RequestData
 	
 	public void set_data(Team[] data)
 	{
+		if(data.length <=0)
+		{
+			this.data = new Team[1];
+			this.data[0] = new Team();
+			return;
+		}
+		amountOfObjects = data.length;
 		this.data = new Team[amountOfObjects];
 		for(int i = 0; i < amountOfObjects; i++)
 		{
@@ -55,6 +62,13 @@ public class RequestData
 	
 	public void set_data(Match[] data)
 	{
+		if(data.length <=0)
+		{
+			this.data = new Match[1];
+			this.data[0] = new Match();
+			return;
+		}
+		amountOfObjects = data.length;
 		this.data = new Match[amountOfObjects];
 		for(int i = 0; i < this.data.length; i++)
 		{
@@ -62,32 +76,48 @@ public class RequestData
 		}
 	}
 	
-	public void set_data(Contest[] data)
+	public void set_data(Contest[] givenData)
 	{
-		this.data = new Contest[amountOfObjects];
-		for(int i = 0; i < this.data.length; i++)
+		if(givenData.length <=0)
 		{
-			this.data[i] = new Contest(data[i]);
+			this.data = new Contest[1];
+			this.data[0] = new Contest();
+			return;
+		}
+		amountOfObjects = givenData.length;
+		this.data = new Contest[amountOfObjects];
+		System.out.println("[SERVER] SETTING DATA SIZE " + this.data.length);
+		
+		for(int i = 0; i < givenData.length; i ++)
+		{
+			System.out.println(givenData[i]);
+		}
+		
+		for(int i = 0; i < amountOfObjects; i++)
+		{
+			System.out.println(givenData[i].toString());
+			this.data[i] = new Contest(givenData[i]);
 		}
 	}
 	
-	public void set_data(IDataModel[] datar)
+	public void set_data(IDataModel[] datar, String type)
 	{
 		if(datar == null) {
 			System.out.println(">> No data given in set_data, exiting...");
 			return;
 		}
-		switch(datar[0].get_type())
+		
+		switch(type)
 		{
-		case Contest:
+		case "Contest":
 			Contest[] c = (Contest[]) datar;
 			set_data(c);
 			break;
-		case Match:
+		case "Match":
 			Match[] m = (Match[]) datar;
 			set_data(m);
 			break;
-		case Team:
+		case "Team":
 			Team[] t = (Team[]) datar;
 			set_data(t);
 			break;

@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
+import com.competition.dm.Contest;
+import com.competition.dm.IDataModel;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -143,13 +145,30 @@ public class UtilityClass
 			}
 		}
 		
-		// Initializes the Database HashMap from the given Json paths and files.
-		public static <OBJ> HashMap<String, OBJ> Init(String path, Type type)
+		public static HashMap<String, Contest> InitCon(String path, Type type)
 		{
-			//TODO: Add a check if the file actually exists, if not, create it.
 			String contents = UtilityClass.ReadClass.FileToString(path);
 			Gson gson = new Gson();
-			return gson.fromJson(contents, type);
+			System.out.println(type);
+
+			HashMap<String, Contest> s = gson.fromJson(contents, type);
+
+			
+			for(int i = 0; i < s.size(); i++)
+			{
+				System.out.println(s.get(String.valueOf(i)));
+			}
+			
+			return s;
+		}
+		
+		// Initializes the Database HashMap from the given Json paths and files.
+		public static <OBJ extends IDataModel> HashMap<String, OBJ> Init(String path, Type type)
+		{
+			String contents = UtilityClass.ReadClass.FileToString(path);
+			Gson gson = new Gson();
+			HashMap<String, OBJ> s = gson.fromJson(contents, type);
+			return s;
 		}
 	}
 }

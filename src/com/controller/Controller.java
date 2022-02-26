@@ -104,9 +104,11 @@ public class Controller
 				break;
 			case "Contest":
 				HashMap<String, Contest> cdb = cs.get_objects();
+				System.out.println("MY cdb IS SIZE " + cdb.size());
 				send = new Contest[cdb.size()];
 				for(int i= 0; i < send.length; i++)
 				{
+					System.out.println(cdb.get(String.valueOf(i)));
 					send[i] = cdb.get(String.valueOf(i));
 				}
 				break;

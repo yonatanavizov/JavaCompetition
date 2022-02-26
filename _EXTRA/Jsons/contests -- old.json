@@ -1,0 +1,1221 @@
+{
+    "0":{
+       "id":0,
+       "name":"contest32",
+       "matches":{
+          "0":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ],
+          "1":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ],
+          "2":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ],
+          "3":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ],
+          "4":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ]
+       },
+       "amountOfTeamsInContest":32
+    },
+    "1":{
+       "id":1,
+       "name":"contest16",
+       "matches":{
+          "0":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ],
+          "1":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ],
+          "2":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ],
+          "3":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ]
+       },
+       "amountOfTeamsInContest":16
+    },
+    "2":{
+       "id":1,
+       "name":"contest4",
+       "matches":{
+          "0":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             },
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ],
+          "1":[
+             {
+                "id":0,
+                "a":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "b":{
+                   "tid":0,
+                   "members":23,
+                   "postion":3,
+                   "rank":"ADVANCED",
+                   "win_loss_ratio":0.33,
+                   "game_type":"basket ball",
+                   "name":"The Bright Fellas",
+                   "summary":"The Bright FellasFellas"
+                },
+                "outcome":"Team_A_Won"
+             }
+          ]
+       },
+       "amountOfTeamsInContest":4
+    }
+ }
