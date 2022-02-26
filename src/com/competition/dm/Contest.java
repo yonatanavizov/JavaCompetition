@@ -10,15 +10,17 @@ import java.util.HashMap;
  */
 public class Contest implements IDataModel
 {
-	String name;
 	int id;
+	String name;
 	HashMap<String, ArrayList<Match>> matches;
+	int amountOfTeamsInContest;
 	
 	public Contest()
 	{
 		this.matches = new HashMap<String, ArrayList<Match>>();
 		this.name="None";
 		this.id=0;
+		amountOfTeamsInContest = 4;
 	}
 	
 	public Contest(Contest other)
@@ -26,18 +28,25 @@ public class Contest implements IDataModel
 		this.matches = new HashMap<String, ArrayList<Match>>(other.matches);
 		this.name=other.name;
 		this.id=other.id;
+		this.amountOfTeamsInContest = other.amountOfTeamsInContest;
 	}
-	public Contest(String name,int id)
+	public Contest(String name,int id, int teamAmount)
 	{
 		this.name=name;
 		this.id=id;
 		this.matches = new HashMap<String, ArrayList<Match>>();
+		this.amountOfTeamsInContest = teamAmount;
 	}
 	@Override
 	public int get_id()
 	{
 		return id;
 	}
+	public int get_amountOfTeamsInContest()
+	{
+		return amountOfTeamsInContest;
+	}
+	
 	public String get_name()
 	{
 		return name;
@@ -51,6 +60,12 @@ public class Contest implements IDataModel
 	{
 		this.id=id;
 	}
+	
+	public void set_amountOfTeamsInContest(int amount)
+	{
+		this.amountOfTeamsInContest = amount;
+	}
+	
 	public HashMap<String, ArrayList<Match>> get_matches()
 	{
 		return matches;

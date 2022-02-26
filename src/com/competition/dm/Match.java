@@ -20,7 +20,15 @@ public class Match implements IDataModel
 	private int id;
 	private Team a, b;
 	private OutCome outcome;
-
+	
+	public Match()
+	{
+		a = new Team();
+		b = new Team();
+		id = -1;
+		this.outcome = OutCome.Undecided;
+	}
+	
 	public Match(Team a, Team b, int id)
 	{
 		this.a = new Team(a);
